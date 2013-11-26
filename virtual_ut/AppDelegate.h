@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NSString * cafe;
+@property (strong, nonatomic) NSString * citron;
 
 @end
