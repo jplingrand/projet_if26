@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55C78E3A18450030007650E9 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C78E3818450030007650E9 /* LoginController.m */; };
+		55C78E3B18450030007650E9 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C78E3918450030007650E9 /* LoginController.xib */; };
 		7EA339F21844E79900FB27B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F11844E79900FB27B8 /* Foundation.framework */; };
 		7EA339F41844E79900FB27B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F31844E79900FB27B8 /* CoreGraphics.framework */; };
 		7EA339F61844E79900FB27B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F51844E79900FB27B8 /* UIKit.framework */; };
@@ -32,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55C78E3718450030007650E9 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		55C78E3818450030007650E9 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		55C78E3918450030007650E9 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		7EA339EE1844E79900FB27B8 /* virtual_ut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtual_ut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA339F11844E79900FB27B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7EA339F31844E79900FB27B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,6 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				7EA33A001844E79900FB27B8 /* AppDelegate.h */,
+				55C78E3718450030007650E9 /* LoginController.h */,
+				55C78E3818450030007650E9 /* LoginController.m */,
+				55C78E3918450030007650E9 /* LoginController.xib */,
 				7EA33A011844E79900FB27B8 /* AppDelegate.m */,
 				7EA33A031844E79900FB27B8 /* Images.xcassets */,
 				7EA339F81844E79900FB27B8 /* Supporting Files */,
@@ -221,6 +229,7 @@
 			files = (
 				7EA339FC1844E79900FB27B8 /* InfoPlist.strings in Resources */,
 				7EA33A041844E79900FB27B8 /* Images.xcassets in Resources */,
+				55C78E3B18450030007650E9 /* LoginController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +250,7 @@
 			files = (
 				7EA33A021844E79900FB27B8 /* AppDelegate.m in Sources */,
 				7EA339FE1844E79900FB27B8 /* main.m in Sources */,
+				55C78E3A18450030007650E9 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +451,7 @@
 				7EA33A1C1844E79900FB27B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EA33A1D1844E79900FB27B8 /* Build configuration list for PBXNativeTarget "virtual_utTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +460,7 @@
 				7EA33A1F1844E79900FB27B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
