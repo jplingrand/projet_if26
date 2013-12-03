@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="-681" y="-931"/>
         </scene>
-        <!--View Controller-->
+        <!--Recherche Controller - Recherche-->
         <scene sceneID="YqE-hy-ODU">
             <objects>
-                <viewController id="DwG-BO-wG1" sceneMemberID="viewController">
+                <viewController id="DwG-BO-wG1" customClass="RechercheController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W3z-65-F3X"/>
                         <viewControllerLayoutGuide type="bottom" id="Hwe-pF-Ous"/>
@@ -80,16 +80,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="SNZ-eR-6Bv"/>
+                    <tabBarItem key="tabBarItem" title="Recherche" id="SNZ-eR-6Bv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhH-XS-nxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1248" y="-428"/>
+            <point key="canvasLocation" x="692" y="-520"/>
         </scene>
-        <!--View Controller - Item 1-->
+        <!--Compte Controller - Mon compte-->
         <scene sceneID="x52-tA-Q7v">
             <objects>
-                <viewController id="l3t-sb-A9b" sceneMemberID="viewController">
+                <viewController id="l3t-sb-A9b" customClass="CompteController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2jS-8V-Sti"/>
                         <viewControllerLayoutGuide type="bottom" id="eCf-ws-lwa"/>
@@ -99,11 +99,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="hlT-iJ-RR6"/>
+                    <tabBarItem key="tabBarItem" title="Mon compte" id="hlT-iJ-RR6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kv-bv-K4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="-1907"/>
+            <point key="canvasLocation" x="684" y="-1999"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZAP-Xj-Soh">
@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="-90" y="-917"/>
         </scene>
-        <!--View Controller - Item 2-->
+        <!--Actualite Controller - Nouvelles annonces-->
         <scene sceneID="VW8-yh-A18">
             <objects>
-                <viewController id="cT6-7V-mzi" sceneMemberID="viewController">
+                <viewController id="cT6-7V-mzi" customClass="ActualiteController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ixm-hF-g7f"/>
                         <viewControllerLayoutGuide type="bottom" id="2AI-ZW-q3q"/>
@@ -140,13 +140,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="xgl-2s-488"/>
+                    <tabBarItem key="tabBarItem" title="Nouvelles annonces" id="xgl-2s-488"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yoX-Mw-yS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1248" y="-1209"/>
+            <point key="canvasLocation" x="684" y="-1261"/>
         </scene>
-        <!--View Controller - Item-->
+        <!--View Controller - Nouveau-->
         <scene sceneID="xAY-We-NLN">
             <objects>
                 <viewController id="8J6-uW-wqb" sceneMemberID="viewController">
@@ -159,11 +159,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="tJE-dF-2ZE"/>
+                    <tabBarItem key="tabBarItem" title="Nouveau" id="tJE-dF-2ZE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QG4-8s-KMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1248" y="318"/>
+            <point key="canvasLocation" x="692" y="226"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
