@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		554C9792184DDB8A00404032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554C9791184DDB8A00404032 /* Main.storyboard */; };
+		554C9795184DDFAB00404032 /* InscriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C9794184DDFAB00404032 /* InscriptionController.m */; };
+		554C9798184DDFE700404032 /* RechercheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C9797184DDFE700404032 /* RechercheController.m */; };
+		554C979B184DE02100404032 /* AnnonceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C979A184DE02100404032 /* AnnonceController.m */; };
 		55C78E3A18450030007650E9 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C78E3818450030007650E9 /* LoginController.m */; };
 		55F129971845032300D6231E /* CompteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F129951845032300D6231E /* CompteController.m */; };
 		55F1299D1845034800D6231E /* ListeAnnoncesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F1299B1845034800D6231E /* ListeAnnoncesController.m */; };
@@ -39,6 +42,12 @@
 
 /* Begin PBXFileReference section */
 		554C9791184DDB8A00404032 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		554C9793184DDFAB00404032 /* InscriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InscriptionController.h; path = ../InscriptionController.h; sourceTree = "<group>"; };
+		554C9794184DDFAB00404032 /* InscriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InscriptionController.m; path = ../InscriptionController.m; sourceTree = "<group>"; };
+		554C9796184DDFE700404032 /* RechercheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechercheController.h; sourceTree = "<group>"; };
+		554C9797184DDFE700404032 /* RechercheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechercheController.m; sourceTree = "<group>"; };
+		554C9799184DE02100404032 /* AnnonceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnonceController.h; sourceTree = "<group>"; };
+		554C979A184DE02100404032 /* AnnonceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnonceController.m; sourceTree = "<group>"; };
 		55C78E3718450030007650E9 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		55C78E3818450030007650E9 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		55F129941845032300D6231E /* CompteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompteController.h; sourceTree = "<group>"; };
@@ -124,18 +133,24 @@
 		7EA339F71844E79900FB27B8 /* virtual_ut */ = {
 			isa = PBXGroup;
 			children = (
+				554C9799184DE02100404032 /* AnnonceController.h */,
+				554C979A184DE02100404032 /* AnnonceController.m */,
 				7EA33A001844E79900FB27B8 /* AppDelegate.h */,
 				7EA33A011844E79900FB27B8 /* AppDelegate.m */,
-				55C78E3718450030007650E9 /* LoginController.h */,
-				55C78E3818450030007650E9 /* LoginController.m */,
 				55F129941845032300D6231E /* CompteController.h */,
 				55F129951845032300D6231E /* CompteController.m */,
-				55F1299A1845034800D6231E /* ListeAnnoncesController.h */,
-				55F1299B1845034800D6231E /* ListeAnnoncesController.m */,
-				55F1299F1845036700D6231E /* NouvelleAnnonceController.h */,
-				55F129A01845036700D6231E /* NouvelleAnnonceController.m */,
 				55F129A4184503B800D6231E /* HistoriqueController.h */,
 				55F129A5184503B800D6231E /* HistoriqueController.m */,
+				554C9793184DDFAB00404032 /* InscriptionController.h */,
+				554C9794184DDFAB00404032 /* InscriptionController.m */,
+				55F1299A1845034800D6231E /* ListeAnnoncesController.h */,
+				55F1299B1845034800D6231E /* ListeAnnoncesController.m */,
+				55C78E3718450030007650E9 /* LoginController.h */,
+				55C78E3818450030007650E9 /* LoginController.m */,
+				55F1299F1845036700D6231E /* NouvelleAnnonceController.h */,
+				55F129A01845036700D6231E /* NouvelleAnnonceController.m */,
+				554C9796184DDFE700404032 /* RechercheController.h */,
+				554C9797184DDFE700404032 /* RechercheController.m */,
 				554C9791184DDB8A00404032 /* Main.storyboard */,
 				7EA33A031844E79900FB27B8 /* Images.xcassets */,
 				7EA339F81844E79900FB27B8 /* Supporting Files */,
@@ -268,12 +283,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554C9798184DDFE700404032 /* RechercheController.m in Sources */,
+				554C9795184DDFAB00404032 /* InscriptionController.m in Sources */,
 				7EA33A021844E79900FB27B8 /* AppDelegate.m in Sources */,
 				7EA339FE1844E79900FB27B8 /* main.m in Sources */,
 				55C78E3A18450030007650E9 /* LoginController.m in Sources */,
 				55F129971845032300D6231E /* CompteController.m in Sources */,
 				55F1299D1845034800D6231E /* ListeAnnoncesController.m in Sources */,
 				55F129A21845036700D6231E /* NouvelleAnnonceController.m in Sources */,
+				554C979B184DE02100404032 /* AnnonceController.m in Sources */,
 				55F129A7184503B800D6231E /* HistoriqueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
