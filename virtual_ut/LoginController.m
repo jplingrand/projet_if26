@@ -37,11 +37,6 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (sender != self.boutonConnexion) return;
-    if (self.textField.text.length > 0) {
-        self.toDoItem = [[XYZToDoItem alloc] init];
-        self.toDoItem.itemName = self.textField.text;
-        self.toDoItem.completed = NO;
 }
 
 @end
