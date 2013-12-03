@@ -51,6 +51,8 @@
                     </view>
                     <connections>
                         <outlet property="BoutonConnexion" destination="5aM-En-2eI" id="zc1-gG-Kdb"/>
+                        <outlet property="txtLogin" destination="XmV-Vs-Nwe" id="v11-WI-XWy"/>
+                        <outlet property="txtPassword" destination="6Sk-dS-ddP" id="HtK-lD-BnF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQz-uA-lbH" userLabel="First Responder" sceneMemberID="firstResponder"/>

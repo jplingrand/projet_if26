@@ -37,6 +37,23 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if (sender != self.boutonConnexion)
+    {
+        return;
+    }
+    else
+    {
+        NSRange match;
+        
+        match = [self.txtLogin.text rangeOfString:@"@"];
+        
+        if (match.location == NSNotFound) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alerte", @"") message:NSLocalizedString(@"Ce n'est pas un login", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alert show];
+            return;
+            
+        }
+    }
 }
 
 @end
