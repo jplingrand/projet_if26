@@ -58,7 +58,7 @@
     NSLog(@"viewdidload");
     self.responseData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://localhost:8888/web_service/authmobile.php?login=test&password=test"]];
+                             [NSURL URLWithString:@"http://localhost:8888/web_service/authmobile.php?login=john&password=doe"]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
