@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		554C192F184F9C9600BF0643 /* InscriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C192E184F9C9600BF0643 /* InscriptionController.m */; };
 		554C9792184DDB8A00404032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554C9791184DDB8A00404032 /* Main.storyboard */; };
-		554C9795184DDFAB00404032 /* InscriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C9794184DDFAB00404032 /* InscriptionController.m */; };
 		554C9798184DDFE700404032 /* RechercheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C9797184DDFE700404032 /* RechercheController.m */; };
 		554C979B184DE02100404032 /* AnnonceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C979A184DE02100404032 /* AnnonceController.m */; };
 		554C979E184DE6D200404032 /* TransactionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C979D184DE6D200404032 /* TransactionController.m */; };
@@ -43,9 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		554C192D184F9C9600BF0643 /* InscriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InscriptionController.h; sourceTree = "<group>"; };
+		554C192E184F9C9600BF0643 /* InscriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InscriptionController.m; sourceTree = "<group>"; };
 		554C9791184DDB8A00404032 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		554C9793184DDFAB00404032 /* InscriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InscriptionController.h; path = ../InscriptionController.h; sourceTree = "<group>"; };
-		554C9794184DDFAB00404032 /* InscriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InscriptionController.m; path = ../InscriptionController.m; sourceTree = "<group>"; };
 		554C9796184DDFE700404032 /* RechercheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechercheController.h; sourceTree = "<group>"; };
 		554C9797184DDFE700404032 /* RechercheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechercheController.m; sourceTree = "<group>"; };
 		554C9799184DE02100404032 /* AnnonceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnonceController.h; sourceTree = "<group>"; };
@@ -139,6 +139,8 @@
 		7EA339F71844E79900FB27B8 /* virtual_ut */ = {
 			isa = PBXGroup;
 			children = (
+				554C192D184F9C9600BF0643 /* InscriptionController.h */,
+				554C192E184F9C9600BF0643 /* InscriptionController.m */,
 				554C979F184DE75300404032 /* ActualiteController.h */,
 				554C97A0184DE75300404032 /* ActualiteController.m */,
 				554C9799184DE02100404032 /* AnnonceController.h */,
@@ -149,8 +151,6 @@
 				55F129951845032300D6231E /* CompteController.m */,
 				55F129A4184503B800D6231E /* HistoriqueController.h */,
 				55F129A5184503B800D6231E /* HistoriqueController.m */,
-				554C9793184DDFAB00404032 /* InscriptionController.h */,
-				554C9794184DDFAB00404032 /* InscriptionController.m */,
 				55F1299A1845034800D6231E /* ListeAnnoncesController.h */,
 				55F1299B1845034800D6231E /* ListeAnnoncesController.m */,
 				55C78E3718450030007650E9 /* LoginController.h */,
@@ -293,8 +293,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554C192F184F9C9600BF0643 /* InscriptionController.m in Sources */,
 				554C9798184DDFE700404032 /* RechercheController.m in Sources */,
-				554C9795184DDFAB00404032 /* InscriptionController.m in Sources */,
 				554C979E184DE6D200404032 /* TransactionController.m in Sources */,
 				7EA33A021844E79900FB27B8 /* AppDelegate.m in Sources */,
 				7EA339FE1844E79900FB27B8 /* main.m in Sources */,
