@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InscriptionController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *boutonInscription;
 
 @end

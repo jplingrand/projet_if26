@@ -8,7 +8,6 @@
         <!--Navigation Controller-->
         <scene sceneID="T7O-H8-D66">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p1a-Fy-EmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="z2b-fn-YAP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ofg-Hx-AQP">
                         <autoresizingMask key="autoresizingMask"/>
@@ -17,6 +16,7 @@
                         <segue destination="qFD-cC-Mvu" kind="relationship" relationship="rootViewController" id="yeP-wi-vYT"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p1a-Fy-EmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1699" y="-903"/>
         </scene>
@@ -99,12 +99,10 @@
             </objects>
             <point key="canvasLocation" x="-1147" y="-859"/>
         </scene>
-        <!--View Controller-->
+        <!--Inscription Controller-->
         <scene sceneID="bGw-5G-XXt">
             <objects>
-                <exit id="eWM-HH-BwA" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rP4-KA-KS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="gTN-fx-5b6" sceneMemberID="viewController">
+                <viewController id="gTN-fx-5b6" customClass="InscriptionController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yMB-ok-30A"/>
                         <viewControllerLayoutGuide type="bottom" id="PtQ-Sa-4o8"/>
@@ -139,7 +137,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="boutonInscription" destination="utR-Tq-Vmm" id="0yu-wb-AIT"/>
+                    </connections>
                 </viewController>
+                <exit id="eWM-HH-BwA" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rP4-KA-KS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-566" y="-533"/>
         </scene>
