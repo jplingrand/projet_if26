@@ -31,24 +31,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([self.txtLogin.text  isEqual: @""] || [self.txtPassword.text  isEqual: @""] ) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alerte", @"") message:NSLocalizedString(@"Veuillez remplir tous les champs", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+        return NO;
+        
+    }
+    return YES;
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if (sender != self.boutonConnexion)
     {
         return;
-    }
-    else
-    {
-        NSRange match;
-        
-        match = [self.txtLogin.text rangeOfString:@"@"];
-        
-        if (match.location == NSNotFound) {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alerte", @"") message:NSLocalizedString(@"Ce n'est pas un login", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
-            [alert show];
-            return;
-            
-        }
     }
 }
 
