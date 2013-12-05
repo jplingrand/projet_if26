@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="z2b-fn-YAP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="z2b-fn-YAP">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -69,7 +69,7 @@
                                             <segue destination="Eks-bh-xKr" kind="modal" id="UAN-al-48r"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sk-dS-ddP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sk-dS-ddP">
                                         <rect key="frame" x="60" y="117" width="195" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -111,7 +111,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04K-vp-Frv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prénom" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04K-vp-Frv">
                                 <rect key="frame" x="20" y="100" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,13 +123,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Om8-Tx-xEL">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Om8-Tx-xEL">
                                 <rect key="frame" x="20" y="176" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GSm-35-677">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GSm-35-677">
                                 <rect key="frame" x="20" y="214" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -141,15 +141,9 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="04K-vp-Frv" secondAttribute="trailing" constant="20" id="1Mi-0G-LSg"/>
-                            <constraint firstItem="PtQ-Sa-4o8" firstAttribute="top" secondItem="04K-vp-Frv" secondAttribute="bottom" constant="438" id="4DA-iZ-sct"/>
-                            <constraint firstItem="04K-vp-Frv" firstAttribute="leading" secondItem="AdD-et-Hbr" secondAttribute="leading" constant="20" id="bEh-R0-ABo"/>
-                            <constraint firstItem="04K-vp-Frv" firstAttribute="top" secondItem="yMB-ok-30A" secondAttribute="bottom" constant="36" id="vvA-oI-wae"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inscription" id="Dfv-6U-Ani">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="3NO-F4-wU7">
+                        <barButtonItem key="leftBarButtonItem" title="Annuler" style="plain" id="3NO-F4-wU7">
                             <connections>
                                 <segue destination="eWM-HH-BwA" kind="unwind" unwindAction="unwindToConnexion:" id="IOT-3t-QiJ"/>
                             </connections>
@@ -169,6 +163,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="boutonInscription" destination="utR-Tq-Vmm" id="0yu-wb-AIT"/>
+                        <outlet property="txtEmail" destination="Om8-Tx-xEL" id="JcY-oR-efr"/>
+                        <outlet property="txtNom" destination="JrW-b6-ySH" id="P74-34-UvF"/>
+                        <outlet property="txtPassword" destination="GSm-35-677" id="nbb-90-ghe"/>
+                        <outlet property="txtPrenom" destination="04K-vp-Frv" id="lK5-w2-vxe"/>
                     </connections>
                 </viewController>
                 <exit id="eWM-HH-BwA" userLabel="Exit" sceneMemberID="exit"/>

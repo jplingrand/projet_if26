@@ -10,5 +10,9 @@
 
 @interface InscriptionController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *boutonInscription;
+@property (weak, nonatomic) IBOutlet UITextField *txtPrenom;
+@property (weak, nonatomic) IBOutlet UITextField *txtNom;
+@property (weak, nonatomic) IBOutlet UITextField *txtEmail;
+@property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 
 @end

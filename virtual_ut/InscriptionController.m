@@ -39,9 +39,16 @@
 {
     if (sender == self.boutonInscription)
     {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Succès", @"") message:NSLocalizedString(@"Inscription réussie", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
-        [alert show];
-        return NO;
+        if ([self.txtPrenom.text  isEqual: @""] || [self.txtNom.text  isEqual: @""] || [self.txtEmail.text  isEqual: @""] || [self.txtPassword.text  isEqual: @""] ) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Veuillez remplir tous les champs", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alert show];
+            return NO;
+        }
+        else {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Succès", @"") message:NSLocalizedString(@"Inscription réussie", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alert show];
+            return YES;
+        }
     }
     return YES;
 }
