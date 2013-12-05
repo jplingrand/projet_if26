@@ -58,4 +58,9 @@
     NSLog(@"prepare for segue");
 }
 
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
 @end
