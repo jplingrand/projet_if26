@@ -18,6 +18,12 @@
 		55F1299D1845034800D6231E /* ListeAnnoncesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F1299B1845034800D6231E /* ListeAnnoncesController.m */; };
 		55F129A21845036700D6231E /* NouvelleAnnonceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F129A01845036700D6231E /* NouvelleAnnonceController.m */; };
 		55F129A7184503B800D6231E /* HistoriqueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F129A5184503B800D6231E /* HistoriqueController.m */; };
+		7E0FF4C918535AA600907B7F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FF4C818535AA600907B7F /* User.m */; };
+		7E0FF4CE18535D8B00907B7F /* Annonce.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FF4CD18535D8B00907B7F /* Annonce.m */; };
+		7E0FF4D118535E1000907B7F /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FF4D018535E1000907B7F /* Transaction.m */; };
+		7E0FF4D418535EFE00907B7F /* Proposition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FF4D318535EFE00907B7F /* Proposition.m */; };
+		7E0FF4D718535F8E00907B7F /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FF4D618535F8E00907B7F /* Message.m */; };
+		7E0FF4DB1853630F00907B7F /* Interface_serveur.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0FF4DA1853630F00907B7F /* Interface_serveur.m */; };
 		7EA339F21844E79900FB27B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F11844E79900FB27B8 /* Foundation.framework */; };
 		7EA339F41844E79900FB27B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F31844E79900FB27B8 /* CoreGraphics.framework */; };
 		7EA339F61844E79900FB27B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F51844E79900FB27B8 /* UIKit.framework */; };
@@ -64,6 +70,18 @@
 		55F129A01845036700D6231E /* NouvelleAnnonceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NouvelleAnnonceController.m; sourceTree = "<group>"; };
 		55F129A4184503B800D6231E /* HistoriqueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoriqueController.h; sourceTree = "<group>"; };
 		55F129A5184503B800D6231E /* HistoriqueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoriqueController.m; sourceTree = "<group>"; };
+		7E0FF4C718535AA600907B7F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		7E0FF4C818535AA600907B7F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		7E0FF4CC18535D8B00907B7F /* Annonce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annonce.h; sourceTree = "<group>"; };
+		7E0FF4CD18535D8B00907B7F /* Annonce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annonce.m; sourceTree = "<group>"; };
+		7E0FF4CF18535E1000907B7F /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		7E0FF4D018535E1000907B7F /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transaction.m; sourceTree = "<group>"; };
+		7E0FF4D218535EFE00907B7F /* Proposition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proposition.h; sourceTree = "<group>"; };
+		7E0FF4D318535EFE00907B7F /* Proposition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proposition.m; sourceTree = "<group>"; };
+		7E0FF4D518535F8E00907B7F /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		7E0FF4D618535F8E00907B7F /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		7E0FF4D91853630F00907B7F /* Interface_serveur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interface_serveur.h; sourceTree = "<group>"; };
+		7E0FF4DA1853630F00907B7F /* Interface_serveur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interface_serveur.m; sourceTree = "<group>"; };
 		7EA339EE1844E79900FB27B8 /* virtual_ut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtual_ut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA339F11844E79900FB27B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7EA339F31844E79900FB27B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,6 +124,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E0FF4CA18535D4500907B7F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				554C192D184F9C9600BF0643 /* InscriptionController.h */,
+				554C192E184F9C9600BF0643 /* InscriptionController.m */,
+				554C979F184DE75300404032 /* ActualiteController.h */,
+				554C97A0184DE75300404032 /* ActualiteController.m */,
+				554C9799184DE02100404032 /* AnnonceController.h */,
+				554C979A184DE02100404032 /* AnnonceController.m */,
+				7EA33A001844E79900FB27B8 /* AppDelegate.h */,
+				7EA33A011844E79900FB27B8 /* AppDelegate.m */,
+				55F129941845032300D6231E /* CompteController.h */,
+				55F129951845032300D6231E /* CompteController.m */,
+				55F129A4184503B800D6231E /* HistoriqueController.h */,
+				55F129A5184503B800D6231E /* HistoriqueController.m */,
+				55F1299A1845034800D6231E /* ListeAnnoncesController.h */,
+				55F1299B1845034800D6231E /* ListeAnnoncesController.m */,
+				55C78E3718450030007650E9 /* LoginController.h */,
+				55C78E3818450030007650E9 /* LoginController.m */,
+				55F1299F1845036700D6231E /* NouvelleAnnonceController.h */,
+				55F129A01845036700D6231E /* NouvelleAnnonceController.m */,
+				554C9796184DDFE700404032 /* RechercheController.h */,
+				554C9797184DDFE700404032 /* RechercheController.m */,
+				554C979C184DE6D200404032 /* TransactionController.h */,
+				554C979D184DE6D200404032 /* TransactionController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7E0FF4CB18535D6400907B7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E0FF4C718535AA600907B7F /* User.h */,
+				7E0FF4C818535AA600907B7F /* User.m */,
+				7E0FF4CC18535D8B00907B7F /* Annonce.h */,
+				7E0FF4CD18535D8B00907B7F /* Annonce.m */,
+				7E0FF4CF18535E1000907B7F /* Transaction.h */,
+				7E0FF4D018535E1000907B7F /* Transaction.m */,
+				7E0FF4D218535EFE00907B7F /* Proposition.h */,
+				7E0FF4D318535EFE00907B7F /* Proposition.m */,
+				7E0FF4D518535F8E00907B7F /* Message.h */,
+				7E0FF4D618535F8E00907B7F /* Message.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7E0FF4D8185362E300907B7F /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				7E0FF4D91853630F00907B7F /* Interface_serveur.h */,
+				7E0FF4DA1853630F00907B7F /* Interface_serveur.m */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
 		7EA339E51844E79900FB27B8 = {
 			isa = PBXGroup;
 			children = (
@@ -139,28 +212,9 @@
 		7EA339F71844E79900FB27B8 /* virtual_ut */ = {
 			isa = PBXGroup;
 			children = (
-				554C192D184F9C9600BF0643 /* InscriptionController.h */,
-				554C192E184F9C9600BF0643 /* InscriptionController.m */,
-				554C979F184DE75300404032 /* ActualiteController.h */,
-				554C97A0184DE75300404032 /* ActualiteController.m */,
-				554C9799184DE02100404032 /* AnnonceController.h */,
-				554C979A184DE02100404032 /* AnnonceController.m */,
-				7EA33A001844E79900FB27B8 /* AppDelegate.h */,
-				7EA33A011844E79900FB27B8 /* AppDelegate.m */,
-				55F129941845032300D6231E /* CompteController.h */,
-				55F129951845032300D6231E /* CompteController.m */,
-				55F129A4184503B800D6231E /* HistoriqueController.h */,
-				55F129A5184503B800D6231E /* HistoriqueController.m */,
-				55F1299A1845034800D6231E /* ListeAnnoncesController.h */,
-				55F1299B1845034800D6231E /* ListeAnnoncesController.m */,
-				55C78E3718450030007650E9 /* LoginController.h */,
-				55C78E3818450030007650E9 /* LoginController.m */,
-				55F1299F1845036700D6231E /* NouvelleAnnonceController.h */,
-				55F129A01845036700D6231E /* NouvelleAnnonceController.m */,
-				554C9796184DDFE700404032 /* RechercheController.h */,
-				554C9797184DDFE700404032 /* RechercheController.m */,
-				554C979C184DE6D200404032 /* TransactionController.h */,
-				554C979D184DE6D200404032 /* TransactionController.m */,
+				7E0FF4D8185362E300907B7F /* Server */,
+				7E0FF4CB18535D6400907B7F /* Model */,
+				7E0FF4CA18535D4500907B7F /* ViewControllers */,
 				554C9791184DDB8A00404032 /* Main.storyboard */,
 				7EA33A031844E79900FB27B8 /* Images.xcassets */,
 				7EA339F81844E79900FB27B8 /* Supporting Files */,
@@ -293,8 +347,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E0FF4C918535AA600907B7F /* User.m in Sources */,
 				554C192F184F9C9600BF0643 /* InscriptionController.m in Sources */,
 				554C9798184DDFE700404032 /* RechercheController.m in Sources */,
+				7E0FF4D118535E1000907B7F /* Transaction.m in Sources */,
+				7E0FF4DB1853630F00907B7F /* Interface_serveur.m in Sources */,
 				554C979E184DE6D200404032 /* TransactionController.m in Sources */,
 				7EA33A021844E79900FB27B8 /* AppDelegate.m in Sources */,
 				7EA339FE1844E79900FB27B8 /* main.m in Sources */,
@@ -304,6 +361,9 @@
 				554C97A1184DE75300404032 /* ActualiteController.m in Sources */,
 				55F129A21845036700D6231E /* NouvelleAnnonceController.m in Sources */,
 				554C979B184DE02100404032 /* AnnonceController.m in Sources */,
+				7E0FF4D718535F8E00907B7F /* Message.m in Sources */,
+				7E0FF4CE18535D8B00907B7F /* Annonce.m in Sources */,
+				7E0FF4D418535EFE00907B7F /* Proposition.m in Sources */,
 				55F129A7184503B800D6231E /* HistoriqueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
