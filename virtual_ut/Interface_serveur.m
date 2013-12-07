@@ -15,7 +15,7 @@
 @implementation Interface_serveur
 @synthesize responseData = _responseData;
 
-- (void) init : (NSString *) type
+- (void) initConnexion : (NSString *) type
 {
     self.requetes = [[NSDictionary alloc]init];
     self.requetes = [NSDictionary dictionaryWithObjectsAndKeys:

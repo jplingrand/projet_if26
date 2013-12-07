@@ -41,7 +41,8 @@
             return NO;
         }
         NSLog(@"c bon");
-        Interface_serveur * serveur = [[Interface_serveur alloc]init : @"inscription"];
+        Interface_serveur * serveur = [[Interface_serveur alloc]init];
+        [serveur initConnexion: @"inscription"];
         return YES;
     }
 }

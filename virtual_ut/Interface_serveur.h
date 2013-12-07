@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface Interface_serveur : NSObject
--(void) init : (NSString *) type;
+-(void) initConnexion : (NSString *) type;
 @end
