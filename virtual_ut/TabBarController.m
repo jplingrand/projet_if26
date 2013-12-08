@@ -1,18 +1,18 @@
 //
-//  CompteController.m
+//  TabBarController.m
 //  virtual_ut
 //
-//  Created by if26 on 26/11/13.
+//  Created by jean-philippe LINGRAND on 08/12/2013.
 //  Copyright (c) 2013 jean-philippe LINGRAND. All rights reserved.
 //
 
-#import "CompteController.h"
+#import "TabBarController.h"
 
-@interface CompteController ()
+@interface TabBarController ()
 
 @end
 
-@implementation CompteController
+@implementation TabBarController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,9 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.prenom.text = @"jp";
-    self.nom.text = self.toto;
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
+    NSLog(self.toto);
 }
 
 - (void)didReceiveMemoryWarning

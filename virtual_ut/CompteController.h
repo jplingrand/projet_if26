@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *tel;
 @property (weak, nonatomic) IBOutlet UILabel *ecole;
 @property (weak, nonatomic) IBOutlet UILabel *credits;
-
+@property NSString * toto;
 @end

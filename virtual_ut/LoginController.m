@@ -8,6 +8,7 @@
 
 #import "LoginController.h"
 #import "Interface_serveur.h"
+#import "TabBarController.h"
 
 @implementation LoginController
 
@@ -40,16 +41,22 @@
             [alert show];
             return NO;
         }
-        NSLog(@"c bon");
-        Interface_serveur * serveur = [[Interface_serveur alloc]init];
-        [serveur initConnexion: @"inscription"];
+        
         return YES;
     }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    NSLog(@"prepare for seg in login");
+    NSLog([segue identifier] );
+    if([[segue identifier] isEqualToString:@"unlock"]){
+        NSLog(@"goof");
+        Interface_serveur * serveur = [[Interface_serveur alloc]init];
+        [serveur initConnexion: @"inscription"];
+        TabBarController *tabBarController = segue.destinationViewController;
+        //tabBarController.toto = @"jojo";
+    }
 }
 
 - (void)viewDidLoad {

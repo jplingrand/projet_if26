@@ -30,6 +30,7 @@
 		7E0FF4E51853714B00907B7F /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0FF4E01853714B00907B7F /* share.png */; };
 		7E0FF4E61853714B00907B7F /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0FF4E11853714B00907B7F /* pencil.png */; };
 		7E0FF4E8185372E600907B7F /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E0FF4E7185372E600907B7F /* question.png */; };
+		7E4737901854893800B1F4A3 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E47378F1854893800B1F4A3 /* TabBarController.m */; };
 		7EA339F21844E79900FB27B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F11844E79900FB27B8 /* Foundation.framework */; };
 		7EA339F41844E79900FB27B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F31844E79900FB27B8 /* CoreGraphics.framework */; };
 		7EA339F61844E79900FB27B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F51844E79900FB27B8 /* UIKit.framework */; };
@@ -94,6 +95,8 @@
 		7E0FF4E01853714B00907B7F /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		7E0FF4E11853714B00907B7F /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		7E0FF4E7185372E600907B7F /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
+		7E47378E1854893800B1F4A3 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		7E47378F1854893800B1F4A3 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		7EA339EE1844E79900FB27B8 /* virtual_ut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtual_ut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA339F11844E79900FB27B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7EA339F31844E79900FB27B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,6 +164,8 @@
 				554C9797184DDFE700404032 /* RechercheController.m */,
 				554C979C184DE6D200404032 /* TransactionController.h */,
 				554C979D184DE6D200404032 /* TransactionController.m */,
+				7E47378E1854893800B1F4A3 /* TabBarController.h */,
+				7E47378F1854893800B1F4A3 /* TabBarController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				7E0FF4C918535AA600907B7F /* User.m in Sources */,
 				554C192F184F9C9600BF0643 /* InscriptionController.m in Sources */,
 				554C9798184DDFE700404032 /* RechercheController.m in Sources */,
+				7E4737901854893800B1F4A3 /* TabBarController.m in Sources */,
 				7E0FF4D118535E1000907B7F /* Transaction.m in Sources */,
 				7E0FF4DB1853630F00907B7F /* Interface_serveur.m in Sources */,
 				554C979E184DE6D200404032 /* TransactionController.m in Sources */,
