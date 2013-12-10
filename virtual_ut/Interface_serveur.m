@@ -27,28 +27,31 @@
         NSOperationQueue * queue = [[NSOperationQueue alloc] init];
         
         [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+            /*
+            Etudiant * etudiant = [[Etudiant alloc]init];
+            etudiant.prenom = @"jacky";
+            etudiant.nom = @"josiane";
+           
+            ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
+             NSError *error;
+             NSMutableDictionary *infosEtudiant = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+             if( error )
+             {
+             NSLog(@"%@", [error localizedDescription]);
+             }
+             else {
+             
+             NSLog(@"Token: %@", infosEtudiant[@"token"] );
+             }
+       */
             
-            NSError *error;
-            NSMutableDictionary *infosEtudiant = [NSJSONSerialization
-                                                  JSONObjectWithData:data
-                                                  options:0
-                                                  error:&error];
-            if( error )
-            {
-                NSLog(@"%@", [error localizedDescription]);
-            }
-            else {
-                
-                NSLog(@"Token: %@", infosEtudiant[@"token"] );
-            }
             [self.viewController performSegueWithIdentifier:@"unlock" sender:self.viewController];
-
-          
+           
+           
+            
         }];
-        Etudiant * etudiant = [[Etudiant alloc]init];
-        etudiant.prenom = @"jacky";
-        etudiant.nom = @"josiane";
-        ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
+        
 
         
     }

@@ -49,7 +49,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Eks-bh-xKr" kind="modal" identifier="unlock" id="UAN-al-48r"/>
+                                    <segue destination="Eks-bh-xKr" kind="modal" identifier="unlock" modalTransitionStyle="partialCurl" id="UAN-al-48r"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sk-dS-ddP">
