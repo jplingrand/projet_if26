@@ -42,7 +42,8 @@
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Veuillez remplir tous les champs", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
         }else{
-            Interface_serveur *serveur = [[Interface_serveur alloc]initConnexion: self.txtLogin.text withPassword:self.txtPassword.text fromViewController:self];
+            [[Interface_serveur alloc]initConnexion: self.txtLogin.text withPassword:self.txtPassword.text fromViewController:self];
+            //[self putIt];
             return NO;
         }
     }
@@ -73,6 +74,11 @@
     [sender resignFirstResponder];
 }
 
+-(void)putIt
+{
+    [self performSegueWithIdentifier:@"unlock" sender:self];
+    NSLog(@"bouboule");
+}
 
 
 @end

@@ -10,53 +10,75 @@
 #import "AppDelegate.h"
 #import "Etudiant.h"
 
+
+@interface Interface_serveur()
+@property (nonatomic, strong) NSMutableData *responseData;
+@end
+
 @implementation Interface_serveur
 
+@synthesize responseData = _responseData;
 
--(id)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(UIViewController *)viewController
+-(void)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(LoginController *)viewController
 {
-    self = [super init];
-    if (self) {
-        self.viewController = [[UIViewController alloc]init];
-        self.viewController = viewController;
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:
-                                 [NSURL URLWithString:@"http://localhost:8888/Web%20Service/appliVUT/login.php?login=test&password=password"]];
-        
-        
-        NSOperationQueue * queue = [[NSOperationQueue alloc] init];
-        
-        [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
-            /*
-            Etudiant * etudiant = [[Etudiant alloc]init];
-            etudiant.prenom = @"jacky";
-            etudiant.nom = @"josiane";
-           
-            ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
-             NSError *error;
-             NSMutableDictionary *infosEtudiant = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-             if( error )
-             {
-             NSLog(@"%@", [error localizedDescription]);
-             }
-             else {
-             
-             NSLog(@"Token: %@", infosEtudiant[@"token"] );
-             }
-       */
-            
-            [self.viewController performSegueWithIdentifier:@"unlock" sender:self.viewController];
-           
-           
-            
-        }];
-        
-
-        
-    }
-    return self;
+    self.view = [[LoginController alloc]init];
+    self.view = viewController;
+    self.responseData = [NSMutableData data];
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [NSURL URLWithString:@"https://maps.googleapis.com/maps/api/place/search/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AIzaSyAbgGH36jnyow0MbJNP4g6INkMXqgKFfHk"]];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+    [self.responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+    NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
+    
+    // convert to JSON
+    NSError *myError = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+    
+    // show all values
+    for(id key in res) {
+        
+        id value = [res objectForKey:key];
+        
+        NSString *keyAsString = (NSString *)key;
+        NSString *valueAsString = (NSString *)value;
+        
+        NSLog(@"key: %@", keyAsString);
+        NSLog(@"value: %@", valueAsString);
+    }
+    
+    // extract specific value...
+    NSArray *results = [res objectForKey:@"results"];
+    
+    for (NSDictionary *result in results) {
+        NSString *icon = [result objectForKey:@"icon"];
+        NSLog(@"icon: %@", icon);
+    }
+    
+    Etudiant * etudiant = [[Etudiant alloc]init];
+    etudiant.prenom = @"johnny";
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
+    [self.view putIt];
+
+    
+}
+
 
 
 @end

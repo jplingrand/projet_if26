@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "UIViewController+TabBar.h"
+#import "LoginController.h"
 
 @interface Interface_serveur : NSObject
-@property (nonatomic,strong) UIViewController * viewController;
--(id)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(UIViewController *)viewController;
+-(void)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(LoginController *)viewController;
+@property (strong,nonatomic) LoginController * view;
 @end
