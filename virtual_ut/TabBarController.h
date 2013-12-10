@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TabBarController : UITabBarController
-@property (strong,nonatomic) NSString * toto;
+@property (weak,nonatomic) NSString * toto;
 @end

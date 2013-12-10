@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 jean-philippe LINGRAND. All rights reserved.
 //
 
-#import "User.h"
+#import "Etudiant.h"
 
 @implementation Etudiant
 

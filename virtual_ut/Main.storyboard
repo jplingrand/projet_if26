@@ -505,7 +505,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="ZAP-Xj-Soh">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="Eks-bh-xKr" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="Eks-bh-xKr" customClass="TabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="OCQ-Lq-TGt"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Nwd-Jl-R1P">

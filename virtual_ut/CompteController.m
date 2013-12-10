@@ -7,6 +7,7 @@
 //
 
 #import "CompteController.h"
+#import "TabBarController.h"
 
 @interface CompteController ()
 
@@ -27,7 +28,8 @@
 {
     [super viewDidLoad];
     self.prenom.text = @"jp";
-    self.nom.text = self.toto;
+    TabBarController *tabBar = (TabBarController *)self.tabBarController;
+    self.nom.text = tabBar.toto;
     // Do any additional setup after loading the view from its nib.
 }
 

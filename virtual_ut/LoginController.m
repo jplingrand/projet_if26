@@ -9,6 +9,7 @@
 #import "LoginController.h"
 #import "Interface_serveur.h"
 #import "TabBarController.h"
+#import "CompteController.h"
 
 @implementation LoginController
 
@@ -54,8 +55,12 @@
         NSLog(@"goof");
         Interface_serveur * serveur = [[Interface_serveur alloc]init];
         [serveur initConnexion: @"inscription"];
-        TabBarController *tabBarController = segue.destinationViewController;
-        //tabBarController.toto = @"jojo";
+        
+        TabBarController *navController = [[TabBarController alloc]init];
+        navController = (TabBarController *)segue.destinationViewController;
+        //CompteController *controller = (CompteController *)navController.topViewController;
+        //controller.isSomethingEnabled = YES; }
+        navController.toto = @"cocoal";
     }
 }
 
