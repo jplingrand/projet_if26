@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		553B886018571E7800F49D1F /* UIViewController+TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 553B885F18571E7800F49D1F /* UIViewController+TabBar.m */; };
 		554C192F184F9C9600BF0643 /* InscriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C192E184F9C9600BF0643 /* InscriptionController.m */; };
 		554C9792184DDB8A00404032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554C9791184DDB8A00404032 /* Main.storyboard */; };
 		554C9798184DDFE700404032 /* RechercheController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554C9797184DDFE700404032 /* RechercheController.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		553B885E18571E7800F49D1F /* UIViewController+TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TabBar.h"; sourceTree = "<group>"; };
+		553B885F18571E7800F49D1F /* UIViewController+TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TabBar.m"; sourceTree = "<group>"; };
 		554C192D184F9C9600BF0643 /* InscriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InscriptionController.h; sourceTree = "<group>"; };
 		554C192E184F9C9600BF0643 /* InscriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InscriptionController.m; sourceTree = "<group>"; };
 		554C9791184DDB8A00404032 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				7EA33A011844E79900FB27B8 /* AppDelegate.m */,
 				55F129941845032300D6231E /* CompteController.h */,
 				55F129951845032300D6231E /* CompteController.m */,
+				553B885E18571E7800F49D1F /* UIViewController+TabBar.h */,
+				553B885F18571E7800F49D1F /* UIViewController+TabBar.m */,
 				55F129A4184503B800D6231E /* HistoriqueController.h */,
 				55F129A5184503B800D6231E /* HistoriqueController.m */,
 				55F1299A1845034800D6231E /* ListeAnnoncesController.h */,
@@ -392,6 +397,7 @@
 				7E0FF4DB1853630F00907B7F /* Interface_serveur.m in Sources */,
 				554C979E184DE6D200404032 /* TransactionController.m in Sources */,
 				7EA33A021844E79900FB27B8 /* AppDelegate.m in Sources */,
+				553B886018571E7800F49D1F /* UIViewController+TabBar.m in Sources */,
 				7EA339FE1844E79900FB27B8 /* main.m in Sources */,
 				55C78E3A18450030007650E9 /* LoginController.m in Sources */,
 				55F129971845032300D6231E /* CompteController.m in Sources */,

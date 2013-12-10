@@ -7,42 +7,52 @@
 //
 
 #import "Interface_serveur.h"
-@interface Interface_serveur ()
-@property (nonatomic, strong) NSMutableData *responseData;
-@property (nonatomic, strong) NSDictionary *requetes;
-@end
 
 @implementation Interface_serveur
 @synthesize responseData = _responseData;
 
-- (void) initConnexion : (NSString *) type
+  
+- (id)initConnexion : (NSString *) type fromViewController:(UIViewController *)viewController
 {
-    self.requetes = [[NSDictionary alloc]init];
-    self.requetes = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"http://localhost:8888/web_service/authmobile.php?login=john&password=doe", @"inscription"
-                               , nil];
-    
-    self.responseData = [NSMutableData data];
-    NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[self.requetes objectForKey:type]]];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSLog(@"google");
+    self = [super init];
+    if (self) {
+        self.viewController = [[UIViewController alloc]init];
+        self.requetes = [[NSDictionary alloc]init];
+        self.requetes = [NSDictionary dictionaryWithObjectsAndKeys:
+                         @"http://localhost:8888/web_service/authmobile.php?login=john&password=doe", @"inscription"
+                         , nil];
+        
+        self.responseData = [NSMutableData data];
+        NSURLRequest *request = [NSURLRequest requestWithURL:
+                                 [NSURL URLWithString:[self.requetes objectForKey:type]]];
+        
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    }
+    return self;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
     NSLog(@"didReceiveResponse");
     [self.responseData setLength:0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
     [self.responseData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
     NSLog(@"connectionDidFinishLoading");
     NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
     // convert to JSON
@@ -59,6 +69,7 @@
         
         NSLog(@"key: %@", keyAsString);
         NSLog(@"value: %@", valueAsString);
+        [self.viewController performSegueWithIdentifier:@"unlock" sender:self.viewController];
     }
     
     // extract specific value...

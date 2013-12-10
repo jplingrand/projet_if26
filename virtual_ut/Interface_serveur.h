@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIViewController+TabBar.h"
 
 @interface Interface_serveur : NSObject
--(void) initConnexion : (NSString *) type;
+@property (nonatomic, strong) NSMutableData *responseData;
+@property (nonatomic, strong) NSDictionary *requetes;
+@property (nonatomic,strong) UIViewController * viewController;
+-(id)initConnexion : (NSString *) type fromViewController:(UIViewController *)viewController;
 @end

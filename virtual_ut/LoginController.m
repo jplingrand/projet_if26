@@ -10,6 +10,7 @@
 #import "Interface_serveur.h"
 #import "TabBarController.h"
 #import "CompteController.h"
+#import "UIViewController+TabBar.h"
 
 @implementation LoginController
 
@@ -35,32 +36,23 @@
     {
         return YES;
     }
-    else
+    else if (sender == self.boutonConnexion)
     {
         if ([self.txtLogin.text  isEqual: @""] || [self.txtPassword.text  isEqual: @""] ) {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Veuillez remplir tous les champs", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
-            return NO;
+        }else{
+            Interface_serveur *serveur = [[Interface_serveur alloc]initConnexion: @"connexion" fromViewController:self];
         }
-        
-        return YES;
     }
+    return NO;
 }
+
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"prepare for seg in login");
-    NSLog([segue identifier] );
     if([[segue identifier] isEqualToString:@"unlock"]){
-        NSLog(@"goof");
-        Interface_serveur * serveur = [[Interface_serveur alloc]init];
-        [serveur initConnexion: @"inscription"];
-        
-        TabBarController *navController = [[TabBarController alloc]init];
-        navController = (TabBarController *)segue.destinationViewController;
-        //CompteController *controller = (CompteController *)navController.topViewController;
-        //controller.isSomethingEnabled = YES; }
-        navController.toto = @"cocoal";
     }
 }
 
