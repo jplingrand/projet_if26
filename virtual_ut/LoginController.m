@@ -74,10 +74,16 @@
     [sender resignFirstResponder];
 }
 
--(void)putIt
+-(void)getResponseFromServeur
 {
-    [self performSegueWithIdentifier:@"unlock" sender:self];
-    NSLog(@"bouboule");
+    NSLog(@"%@",self.tabBar.etudiant);
+   if(self.tabBar.etudiant)
+   {
+       [self performSegueWithIdentifier:@"unlock" sender:self];
+   }else{
+       UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur de connexion", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+       [alert show];
+   }
 }
 
 

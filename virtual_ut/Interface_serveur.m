@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "Etudiant.h"
 
-
 @interface Interface_serveur()
 @property (nonatomic, strong) NSMutableData *responseData;
 @end
@@ -25,7 +24,7 @@
     self.view = viewController;
     self.responseData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"https://maps.googleapis.com/maps/api/place/search/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AIzaSyAbgGH36jnyow0MbJNP4g6INkMXqgKFfHk"]];
+                             [NSURL URLWithString:@"http://localhost:8888/web%20service/appliVUT/login.php"]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
@@ -41,6 +40,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+    [self.view getResponseFromServeur];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -74,11 +74,9 @@
     Etudiant * etudiant = [[Etudiant alloc]init];
     etudiant.prenom = @"johnny";
     ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
-    [self.view putIt];
-
+    NSLog(@"reponse");
+    [self.view getResponseFromServeur];
     
 }
-
-
 
 @end
