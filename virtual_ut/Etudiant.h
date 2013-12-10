@@ -15,7 +15,7 @@
 @property NSString * nom;
 @property NSString * ecole;
 @property NSString * email;
-@property int * tel;
+@property NSString * tel;
 @property int * credits;
 @property long * note;
 @end

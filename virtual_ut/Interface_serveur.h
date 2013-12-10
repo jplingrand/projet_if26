@@ -10,8 +10,6 @@
 #import "UIViewController+TabBar.h"
 
 @interface Interface_serveur : NSObject
-@property (nonatomic, strong) NSMutableData *responseData;
-@property (nonatomic, strong) NSDictionary *requetes;
 @property (nonatomic,strong) UIViewController * viewController;
--(id)initConnexion : (NSString *) type fromViewController:(UIViewController *)viewController;
+-(id)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(UIViewController *)viewController;
 @end

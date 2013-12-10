@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+TabBar.h"
+#import "AppDelegate.h"
 
 
 @implementation UIViewController (TabBar)
@@ -17,6 +18,7 @@
 
 - (Etudiant *) etudiant
 {
-    return self.tabBar.etudiant;
+    NSLog(@"%@",self.tabBar);
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant;
 }
 @end

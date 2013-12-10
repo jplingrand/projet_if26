@@ -7,79 +7,53 @@
 //
 
 #import "Interface_serveur.h"
+#import "AppDelegate.h"
+#import "Etudiant.h"
 
 @implementation Interface_serveur
-@synthesize responseData = _responseData;
 
-  
-- (id)initConnexion : (NSString *) type fromViewController:(UIViewController *)viewController
+
+-(id)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(UIViewController *)viewController
 {
-    NSLog(@"google");
     self = [super init];
     if (self) {
         self.viewController = [[UIViewController alloc]init];
-        self.requetes = [[NSDictionary alloc]init];
-        self.requetes = [NSDictionary dictionaryWithObjectsAndKeys:
-                         @"http://localhost:8888/web_service/authmobile.php?login=john&password=doe", @"inscription"
-                         , nil];
+        self.viewController = viewController;
         
-        self.responseData = [NSMutableData data];
         NSURLRequest *request = [NSURLRequest requestWithURL:
-                                 [NSURL URLWithString:[self.requetes objectForKey:type]]];
+                                 [NSURL URLWithString:@"http://localhost:8888/Web%20Service/appliVUT/login.php?login=test&password=password"]];
         
-        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        NSOperationQueue * queue = [[NSOperationQueue alloc] init];
+        
+        [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            
+            NSError *error;
+            NSMutableDictionary *infosEtudiant = [NSJSONSerialization
+                                                  JSONObjectWithData:data
+                                                  options:0
+                                                  error:&error];
+            if( error )
+            {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else {
+                
+                NSLog(@"Token: %@", infosEtudiant[@"token"] );
+            }
+            [self.viewController performSegueWithIdentifier:@"unlock" sender:self.viewController];
+
+          
+        }];
+        Etudiant * etudiant = [[Etudiant alloc]init];
+        etudiant.prenom = @"jacky";
+        etudiant.nom = @"josiane";
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
+
+        
     }
     return self;
 }
 
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"didReceiveResponse");
-    [self.responseData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [self.responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
-    // convert to JSON
-    NSError *myError = nil;
-    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-    
-    // show all values
-    for(id key in res) {
-        
-        id value = [res objectForKey:key];
-        
-        NSString *keyAsString = (NSString *)key;
-        NSString *valueAsString = (NSString *)value;
-        
-        NSLog(@"key: %@", keyAsString);
-        NSLog(@"value: %@", valueAsString);
-        [self.viewController performSegueWithIdentifier:@"unlock" sender:self.viewController];
-    }
-    
-    // extract specific value...
-    NSArray *results = [res objectForKey:@"results"];
-    
-    for (NSDictionary *result in results) {
-        NSString *icon = [result objectForKey:@"icon"];
-        NSLog(@"icon: %@", icon);
-    }
-    
-}
 
 @end

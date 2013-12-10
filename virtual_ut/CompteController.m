@@ -8,6 +8,7 @@
 
 #import "CompteController.h"
 #import "TabBarController.h"
+#import "UIViewController+TabBar.h"
 
 @interface CompteController ()
 
@@ -27,9 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.prenom.text = @"jp";
-    TabBarController *tabBar = (TabBarController *)self.tabBarController;
-    self.nom.text = tabBar.toto;
+    self.prenom.text = self.tabBar.etudiant.prenom;
+    self.nom.text = self.tabBar.etudiant.nom;
+    self.tel.text = self.tabBar.etudiant.tel;
+    self.ecole.text = self.tabBar.etudiant.ecole;
+    
     // Do any additional setup after loading the view from its nib.
 }
 
