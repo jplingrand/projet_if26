@@ -8,6 +8,6 @@
 
 #import "User.h"
 
-@implementation User
+@implementation Etudiant
 
 @end

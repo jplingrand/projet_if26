@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface User : NSObject
+@interface Etudiant : NSObject
+@property int * token ;
 @property int * id;
 @property NSString * prenom;
 @property NSString * nom;
