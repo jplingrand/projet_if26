@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtLogin;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 -(IBAction)textFieldReturn:(id)sender;
--(void) getResponseFromServeur;
+-(void) getResponseFromServeur : (BOOL) reponse;
 @end

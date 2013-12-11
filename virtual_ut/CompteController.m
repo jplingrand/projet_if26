@@ -32,8 +32,7 @@
     self.nom.text = self.tabBar.etudiant.nom;
     self.tel.text = self.tabBar.etudiant.tel;
     self.ecole.text = self.tabBar.etudiant.ecole;
-    
-    // Do any additional setup after loading the view from its nib.
+    self.credits.text = [NSString stringWithFormat:@"%d", self.tabBar.etudiant.credits ];
 }
 
 - (void)didReceiveMemoryWarning

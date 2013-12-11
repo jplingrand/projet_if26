@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface Etudiant : NSObject
-@property int * token ;
-@property int * id;
+@property int token ;
+@property int id;
 @property NSString * prenom;
 @property NSString * nom;
 @property NSString * ecole;
 @property NSString * email;
 @property NSString * tel;
-@property int * credits;
-@property long * note;
+@property int credits;
+@property long note;
 @end

@@ -18,13 +18,15 @@
 
 @synthesize responseData = _responseData;
 
--(void)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(LoginController *)viewController
+-(void)initConnexion : (NSString *)login withPassword :(NSString*)password fromViewController:(LoginController *)viewController
 {
     self.view = [[LoginController alloc]init];
     self.view = viewController;
     self.responseData = [NSMutableData data];
+    NSString * myURL = (NSString *)[NSString stringWithFormat:@"http://localhost:8888/Web\uFF05Service/appliVUT/login.php?login=%@&password=%@", login, password];
+    NSLog(myURL);
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://localhost:8888/web%20service/appliVUT/login.php"]];
+                             [NSURL URLWithString: myURL]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
@@ -40,7 +42,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-    [self.view getResponseFromServeur];
+    [self.view getResponseFromServeur : YES];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -50,32 +52,21 @@
     // convert to JSON
     NSError *myError = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-    
-    // show all values
-    for(id key in res) {
-        
-        id value = [res objectForKey:key];
-        
-        NSString *keyAsString = (NSString *)key;
-        NSString *valueAsString = (NSString *)value;
-        
-        NSLog(@"key: %@", keyAsString);
-        NSLog(@"value: %@", valueAsString);
-    }
-    
-    // extract specific value...
-    NSArray *results = [res objectForKey:@"results"];
-    
-    for (NSDictionary *result in results) {
-        NSString *icon = [result objectForKey:@"icon"];
-        NSLog(@"icon: %@", icon);
-    }
-    
+
     Etudiant * etudiant = [[Etudiant alloc]init];
-    etudiant.prenom = @"johnny";
+    etudiant.prenom = [res objectForKey:@"prenom"];
+    etudiant.nom = [res objectForKey:@"nom"];
+    etudiant.ecole = [res objectForKey:@"UT"];
+    etudiant.tel = [res objectForKey:@"telephone"];
+    etudiant.credits = [[res objectForKey:@"creditVUTs"]intValue];
+    etudiant.token = [[res objectForKey:@"token"]intValue];
+    
+    
     ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
-    NSLog(@"reponse");
-    [self.view getResponseFromServeur];
+
+    [self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
+    //[self.view getResponseFromServeur : NO];
+
     
 }
 
