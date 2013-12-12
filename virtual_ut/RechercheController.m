@@ -12,7 +12,7 @@
 
 @end
 
-@implementation RechercheController
+@implementation RechercheController 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    //self.pickerCategories = [[UIPickerView alloc]init];
+    self.pickerCategories.dataSource = self;
+    self.pickerCategories.delegate = self;
+    self.categories = [[NSArray alloc]initWithObjects:@"un",@"deux",@"trois" ,nil];
+    [self.pickerCategories reloadAllComponents];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,4 +45,24 @@
 {
     
 }
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
+{
+    
+    return [self.categories objectAtIndex:row];
+    
+}
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+    
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
+{
+    return [self.categories count];
+    
+}
+
 @end
