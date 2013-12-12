@@ -40,12 +40,12 @@
     
     self.responseData = [NSMutableData data];
     
-    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%Service/appliVUT/inscription.php?login=%@&password=%@&nom=%@&prenom=%@&UT=%@&telephone=%@&email=%@", login, password,nom,prenom,ecole,tel,email];
-    
+   NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%20Service/appliVUT/inscription.php?login=%@&password=%@&nom=%@&prenom=%@&UT=%@&telephone=%@&email=%@", login, password,nom,prenom,ecole,tel,email];
+ 
+    NSLog(stringURL);
     NSURL * myURL = [NSURL URLWithString:stringURL];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString: myURL]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
     
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }

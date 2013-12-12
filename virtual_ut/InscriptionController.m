@@ -47,8 +47,10 @@
             [alert show];
             [[Interface_serveur alloc]initInscription:self withNom:self.nom.text withPrenom:self.prenom.text withEmail:self.email.text withTel:self.telephone.text withEcole:self.ecole.text withLogin:self.login.text withPassword:self.password.text];
         }
+    }else{
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
