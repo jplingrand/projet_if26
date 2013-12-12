@@ -18,7 +18,6 @@
 
 - (Etudiant *) etudiant
 {
-    NSLog(@"%@",self.tabBar);
     return ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant;
 }
 @end

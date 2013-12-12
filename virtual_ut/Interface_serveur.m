@@ -22,13 +22,34 @@
 {
     self.view = [[LoginController alloc]init];
     self.view = viewController;
+    
     self.responseData = [NSMutableData data];
-    NSString * myURL = (NSString *)[NSString stringWithFormat:@"http://localhost:8888/Web\uFF05Service/appliVUT/login.php?login=%@&password=%@", login, password];
-    NSLog(myURL);
-    NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString: myURL]];
+    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%20Service/appliVUT/login.php?login=%@&password=%@",login,password];
+    
+    NSURL * myURL = [NSURL URLWithString:stringURL];
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
+    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
+
+-(void)initInscription : (InscriptionController *) viewController withNom : (NSString *) nom withPrenom : (NSString *) prenom withEmail : (NSString* ) email withTel : (NSString *) tel withEcole :(NSString *) ecole withLogin : (NSString*) login withPassword : (NSString *) password
+{
+    self.view = [[InscriptionController alloc]init];
+    self.view = viewController;
+    
+    self.responseData = [NSMutableData data];
+    
+    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%Service/appliVUT/inscription.php?login=%@&password=%@&nom=%@&prenom=%@&UT=%@&telephone=%@&email=%@", login, password,nom,prenom,ecole,tel,email];
+    
+    NSURL * myURL = [NSURL URLWithString:stringURL];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [NSURL URLWithString: myURL]];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"didReceiveResponse");
@@ -42,7 +63,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-    [self.view getResponseFromServeur : YES];
+    [(LoginController *)self.view getResponseFromServeur : YES];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -53,20 +74,25 @@
     NSError *myError = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
 
-    Etudiant * etudiant = [[Etudiant alloc]init];
-    etudiant.prenom = [res objectForKey:@"prenom"];
-    etudiant.nom = [res objectForKey:@"nom"];
-    etudiant.ecole = [res objectForKey:@"UT"];
-    etudiant.tel = [res objectForKey:@"telephone"];
-    etudiant.credits = [[res objectForKey:@"creditVUTs"]intValue];
-    etudiant.token = [[res objectForKey:@"token"]intValue];
-    
-    
-    ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
+    if([self.view isKindOfClass:[LoginController class]]){
+        
+        Etudiant * etudiant = [[Etudiant alloc]init];
+        
+        etudiant.prenom = [res objectForKey:@"prenom"];
+        etudiant.nom = [res objectForKey:@"nom"];
+        etudiant.ecole = [res objectForKey:@"UT"];
+        etudiant.tel = [res objectForKey:@"telephone"];
+        etudiant.credits = [[res objectForKey:@"creditVUTs"]intValue];
+        etudiant.token = [[res objectForKey:@"token"]intValue];
+        
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
+        
+        [(LoginController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
+        
+    }else{
+        [(InscriptionController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
 
-    [self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
-    //[self.view getResponseFromServeur : NO];
-
+    }
     
 }
 

@@ -43,7 +43,6 @@
             [alert show];
         }else{
             [[Interface_serveur alloc]initConnexion: self.txtLogin.text withPassword:self.txtPassword.text fromViewController:self];
-            //[self putIt];
             return NO;
         }
     }

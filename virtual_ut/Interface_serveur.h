@@ -9,8 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "UIViewController+TabBar.h"
 #import "LoginController.h"
+#import "InscriptionController.h"
 
 @interface Interface_serveur : NSObject
+
 -(void)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(LoginController *)viewController;
-@property (strong,nonatomic) LoginController * view;
+
+-(void)initInscription : (InscriptionController *) viewController withNom : (NSString *) nom withPrenom : (NSString *) prenom withEmail : (NSString* ) email withTel : (NSString *) tel withEcole :(NSString *) ecole withLogin : (NSString*) login withPassword : (NSString *) password;
+
+@property (strong,nonatomic) UIViewController * view;
 @end

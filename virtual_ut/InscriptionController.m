@@ -7,10 +7,8 @@
 //
 
 #import "InscriptionController.h"
+#import "Interface_serveur.h"
 
-@interface InscriptionController ()
-
-@end
 
 @implementation InscriptionController
 
@@ -39,7 +37,7 @@
 {
     if (sender == self.boutonInscription)
     {
-        if ([self.txtPrenom.text  isEqual: @""] || [self.txtNom.text  isEqual: @""] || [self.txtEmail.text  isEqual: @""] || [self.txtPassword.text  isEqual: @""] ) {
+        if ([self.prenom.text  isEqual: @""] || [self.nom.text  isEqual: @""] || [self.email.text  isEqual: @""] || [self.password.text  isEqual: @""] || [self.ecole.text  isEqual: @""]|| [self.telephone.text  isEqual: @""]|| [self.login.text  isEqual: @""]) {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Veuillez remplir tous les champs", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
             return NO;
@@ -47,7 +45,7 @@
         else {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Succès", @"") message:NSLocalizedString(@"Inscription réussie", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
-            return YES;
+            [[Interface_serveur alloc]initInscription:self withNom:self.nom.text withPrenom:self.prenom.text withEmail:self.email.text withTel:self.telephone.text withEcole:self.ecole.text withLogin:self.login.text withPassword:self.password.text];
         }
     }
     return YES;
@@ -62,5 +60,10 @@
 {
     [sender resignFirstResponder];
 }
+-(void) getResponseFromServeur : (BOOL) reponse
+{
+    NSLog(@"serveur ok: %@", reponse ? @"YES" : @"NO");
+}
+
 
 @end

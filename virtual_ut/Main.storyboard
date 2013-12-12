@@ -144,7 +144,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GSm-35-677">
-                                <rect key="frame" x="20" y="214" width="280" height="30"/>
+                                <rect key="frame" x="20" y="329" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -153,17 +153,35 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ob8-EJ-xcC">
-                                <rect key="frame" x="20" y="296" width="280" height="8"/>
+                                <rect key="frame" x="17" y="367" width="280" height="8"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.00042700054759999998" green="0.38297723830000002" blue="0.70017408290000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5TB-M9-7g9">
+                                <rect key="frame" x="20" y="291" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Téléphone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eZ-sa-CZ9">
+                                <rect key="frame" x="20" y="214" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ecole" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6nw-7o-4HN">
+                                <rect key="frame" x="20" y="252" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Inscription" id="Dfv-6U-Ani">
                         <barButtonItem key="leftBarButtonItem" title="Annuler" style="plain" id="3NO-F4-wU7">
                             <connections>
-                                <segue destination="eWM-HH-BwA" kind="unwind" unwindAction="unwindToConnexion:" id="IOT-3t-QiJ"/>
+                                <segue destination="eWM-HH-BwA" kind="unwind" unwindAction="unwindToConnexion:" id="KHe-we-NRV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="y5D-kg-iN6">
@@ -181,6 +199,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="boutonInscription" destination="utR-Tq-Vmm" id="0yu-wb-AIT"/>
+                        <outlet property="ecole" destination="6nw-7o-4HN" id="lcD-oh-jnQ"/>
+                        <outlet property="email" destination="Om8-Tx-xEL" id="WWs-by-ano"/>
+                        <outlet property="login" destination="5TB-M9-7g9" id="dZk-6b-9Cr"/>
+                        <outlet property="nom" destination="JrW-b6-ySH" id="03M-hr-VY6"/>
+                        <outlet property="password" destination="GSm-35-677" id="lXx-kG-ZJh"/>
+                        <outlet property="prenom" destination="04K-vp-Frv" id="RlP-nX-xzI"/>
+                        <outlet property="telephone" destination="0eZ-sa-CZ9" id="mQu-DC-2bt"/>
                         <outlet property="txtEmail" destination="Om8-Tx-xEL" id="JcY-oR-efr"/>
                         <outlet property="txtNom" destination="JrW-b6-ySH" id="P74-34-UvF"/>
                         <outlet property="txtPassword" destination="GSm-35-677" id="nbb-90-ghe"/>
