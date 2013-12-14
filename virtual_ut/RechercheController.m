@@ -7,6 +7,7 @@
 //
 
 #import "RechercheController.h"
+#import "AppDelegate.h"
 
 @interface RechercheController ()
 
@@ -30,9 +31,9 @@
     //self.pickerCategories = [[UIPickerView alloc]init];
     self.pickerCategories.dataSource = self;
     self.pickerCategories.delegate = self;
-    self.categories = [[NSArray alloc]initWithObjects:@"un",@"deux",@"trois" ,nil];
+    self.categories = [[NSArray alloc]init];
+    self.categories = ((AppDelegate *)[UIApplication sharedApplication].delegate).listeCategories;
     [self.pickerCategories reloadAllComponents];
-
 }
 
 - (void)didReceiveMemoryWarning

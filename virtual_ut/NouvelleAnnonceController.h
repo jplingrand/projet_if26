@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NouvelleAnnonceController : UIViewController
-
+@interface NouvelleAnnonceController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
+@property (strong, nonatomic) IBOutlet UIPickerView * pickerCategories;
+@property(strong,nonatomic) NSArray * categories;
 @end

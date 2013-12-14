@@ -11,6 +11,13 @@
 
 @implementation AppDelegate
 
+-(id)init
+{
+    self.listeCategories = [[NSArray alloc]initWithObjects:@"Electromenager",@"Covoiturage",@"high-tech",@"fringues",@"billeterie",@"services",@"vélo",@"hors catégorie",@"ameublement", nil];
+    self = [super init];
+    return self;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     return YES;
