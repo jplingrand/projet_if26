@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *champRecherche;
 @property (weak, nonatomic) IBOutlet UIButton *boutonRechercher;
 @property(strong,nonatomic) NSArray * categories;
-
+-(IBAction)textFieldReturn:(id)sender;
 @end

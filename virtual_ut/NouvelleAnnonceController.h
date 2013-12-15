@@ -10,5 +10,15 @@
 
 @interface NouvelleAnnonceController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UIPickerView * pickerCategories;
+@property (weak, nonatomic) IBOutlet UITextField * titre;
+@property (weak, nonatomic) IBOutlet UITextField * prix;
+@property (weak, nonatomic) IBOutlet UITextView * contenu;
 @property(strong,nonatomic) NSArray * categories;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *boutonOffreDemande;
+
+-(void) getResponseFromServeur : (BOOL) reponse;
+
+-(IBAction)textFieldReturn:(id)sender ;
+- (IBAction)actionPoster:(id)sender;
+
 @end

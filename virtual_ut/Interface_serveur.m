@@ -42,12 +42,32 @@
     
    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%20Service/appliVUT/inscription.php?login=%@&password=%@&nom=%@&prenom=%@&UT=%@&telephone=%@&email=%@", login, password,nom,prenom,ecole,tel,email];
  
-    NSLog(stringURL);
     NSURL * myURL = [NSURL URLWithString:stringURL];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
     
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+-(void) initAnnonce : (NouvelleAnnonceController * ) viewController withType :(NSString*)type withTitle : (NSString * )titre withTexte:(NSString*)texte withCategorie : (NSString *)categorie withPrix:(NSString*) prix
+{
+    self.view = [[NouvelleAnnonceController alloc]init];
+    self.view = viewController;
+    
+    self.responseData = [NSMutableData data];
+    
+    NSString * token = [NSString stringWithFormat:@"%i",((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token];
+    NSLog(token);
+    
+    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%20Service/appliVUT/annonce.php?token=%@&categorie=%@&titre=%@&texte=%@&prix=%@&type=%@", token,categorie,titre,texte,prix,type];
+    
+    
+    NSURL * myURL = [NSURL URLWithString:stringURL];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
 }
 
 
@@ -84,14 +104,16 @@
         etudiant.tel = [res objectForKey:@"telephone"];
         etudiant.credits = [[res objectForKey:@"creditVUTs"]intValue];
         etudiant.token = [[res objectForKey:@"token"]intValue];
-        
+        NSLog(@"%@",etudiant.token);
         ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
         
         [(LoginController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
         
-    }else{
+    }else if([self.view isKindOfClass:[InscriptionController class]]){
         [(InscriptionController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
 
+    }else if ([self.view isKindOfClass:[NouvelleAnnonceController class]]){
+        [(NouvelleAnnonceController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
     }
     
 }

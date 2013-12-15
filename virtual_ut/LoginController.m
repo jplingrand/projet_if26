@@ -72,6 +72,10 @@
 {
     [sender resignFirstResponder];
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
 -(void)getResponseFromServeur : (BOOL) reponse
 {
@@ -84,6 +88,7 @@
        [alert show];
    }
 }
+
 
 
 @end
