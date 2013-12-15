@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *prixMax;
 @property (weak, nonatomic) IBOutlet UITextField *champRecherche;
 @property (weak, nonatomic) IBOutlet UIButton *boutonRechercher;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *boutonOfffreDemande;
 @property(strong,nonatomic) NSArray * categories;
 -(IBAction)textFieldReturn:(id)sender;
 @end

@@ -104,7 +104,7 @@
         etudiant.tel = [res objectForKey:@"telephone"];
         etudiant.credits = [[res objectForKey:@"creditVUTs"]intValue];
         etudiant.token = [[res objectForKey:@"token"]intValue];
-        NSLog(@"%@",etudiant.token);
+        
         ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
         
         [(LoginController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];

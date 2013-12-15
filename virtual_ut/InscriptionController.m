@@ -43,8 +43,6 @@
             return NO;
         }
         else {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Succès", @"") message:NSLocalizedString(@"Inscription réussie", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
-            [alert show];
             [[Interface_serveur alloc]initInscription:self withNom:self.nom.text withPrenom:self.prenom.text withEmail:self.email.text withTel:self.telephone.text withEcole:self.ecole.text withLogin:self.login.text withPassword:self.password.text];
         }
     }else{
@@ -64,7 +62,13 @@
 }
 -(void) getResponseFromServeur : (BOOL) reponse
 {
-    NSLog(@"serveur ok: %@", reponse ? @"YES" : @"NO");
+    if(reponse){
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Succès", @"") message:NSLocalizedString(@"Echec de linscription", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+    }else{
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Succès", @"") message:NSLocalizedString(@"Inscription réussie", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 

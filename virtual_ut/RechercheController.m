@@ -46,6 +46,40 @@
 {
     
 }
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if (sender == self.boutonRechercher)
+    {
+        NSString * type = [[NSString alloc]init];
+        NSString * prixMin = [[NSString alloc]init];
+        NSString * prixMax = [[NSString alloc]init];
+        NSString * motsCles = [[NSString alloc]init];
+        NSString * categorie = [[NSString alloc]init];
+        
+        if([self.boutonOfffreDemande selectedSegmentIndex]==0){
+            type = @"offre";
+        }else{
+            type = @"demande";
+        }
+        
+        if(self.prixMin.text!=nil){
+            prixMin = self.prixMin.text;
+        }
+        
+        if(self.prixMax.text!=nil){
+            prixMax = self.prixMax.text;
+        }
+        
+        if (self.champRecherche.text!=nil) {
+            motsCles = self.champRecherche.text;
+        }
+        
+        categorie = [self.categories objectAtIndex:[self.pickerCategories selectedRowInComponent:0]];
+        
+    }
+    return YES;
+}
+
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
 {
