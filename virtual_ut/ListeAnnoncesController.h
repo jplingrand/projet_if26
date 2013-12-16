@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ListeAnnoncesController : UITableViewController
+@property NSMutableArray * annonces;
 
 @end

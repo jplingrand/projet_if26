@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface Annonce : NSObject
-@property int * id;
+@property int id;
 @property NSDate * date;
-@property int * idEtudiant;
+@property int idEtudiant;
 @property NSString * categorie;
 @property NSString * titre;
 @property NSString * texte;
-@property int * prix;
-@property BOOL * valide;
+@property int prix;
+@property BOOL valide;
 @property NSMutableArray * messages;
 @end

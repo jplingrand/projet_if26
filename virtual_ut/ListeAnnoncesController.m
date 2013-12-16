@@ -7,8 +7,12 @@
 //
 
 #import "ListeAnnoncesController.h"
-
+#import "Annonce.h"
+#import "AnnonceCell.h"
 @interface ListeAnnoncesController ()
+@property (weak,nonatomic) Annonce * annonce1;
+@property (weak,nonatomic) Annonce * annonce2;
+@property (weak,nonatomic) Annonce * annonce3;
 
 @end
 
@@ -26,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.annonces = [[NSMutableArray alloc]init];
+    [self loadInitialData];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,32 +45,42 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)loadInitialData {
+    Annonce *item1 = [[Annonce alloc] init];
+    item1.titre = @"Buy milk";
+    item1.prix = 11;
+    [self.annonces addObject:item1];
+    Annonce *item2 = [[Annonce alloc] init];
+    item2.titre = @"Buy eggs";
+    item2.prix = 17;
+    [self.annonces addObject:item2];
+    Annonce *item3 = [[Annonce alloc] init];
+    item3.titre = @"Read a book";
+    item3.prix = 20;
+    [self.annonces addObject:item3];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.annonces count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     
-    // Configure the cell...
+    static NSString * cellIdentifier = @"annonceCell";
+    
+    AnnonceCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    Annonce * annonce = [self.annonces objectAtIndex:indexPath.row];
+    cell.titre.text = annonce.titre;
+    cell.prix.text = [NSString stringWithFormat:@"%d",annonce.prix];
     
     return cell;
 }
