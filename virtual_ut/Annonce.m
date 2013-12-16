@@ -9,5 +9,14 @@
 #import "Annonce.h"
 
 @implementation Annonce
-
+-(id)init
+{
+    self = [super init];
+    self.messages = [[NSMutableArray alloc] init];
+    self.texte = [[NSString alloc]init];
+    self.titre = [[NSString alloc]init];
+    self.date = [[NSDate alloc]init];
+    self.categorie = [[NSString alloc]init];
+    return self;
+}
 @end

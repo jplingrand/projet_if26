@@ -14,6 +14,7 @@
 
 @end
 
+
 @implementation NouvelleAnnonceController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,6 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.titre.delegate = self;
+    self.contenu.delegate = self;
+    self.prix.delegate = self;
+    
+    [self registerForKeyboardNotifications];
     self.pickerCategories.dataSource = self;
     self.pickerCategories.delegate = self;
     self.categories = [[NSArray alloc]init];
@@ -71,17 +77,59 @@
 
 - (IBAction)actionPoster:(id)sender {
     NSString * type = [[NSString alloc]init];
-    if([self.boutonOffreDemande selectedSegmentIndex]==0){
-        NSString * type = @"offre";
-    }else{
-        NSString * type = @"demande";
-    }
+    type = @"offre";
+
     NSString * categorie = [self.categories objectAtIndex:[self.pickerCategories selectedRowInComponent:0]];
     NSString * titre = self.titre.text;
     NSString * texte = self.contenu.text;
     NSString * prix = self.prix.text;
-    NSLog(type);
     [[Interface_serveur alloc]initAnnonce:self withType:type withTitle:titre withTexte:texte withCategorie:categorie withPrix:prix];
+}
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.activeField.frame.origin.y-kbSize.height/2);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    NSLog(@"c la joie");
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.activeField = nil;
 }
 
 -(void) getResponseFromServeur : (BOOL) reponse

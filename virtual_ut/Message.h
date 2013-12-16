@@ -11,4 +11,5 @@
 @interface Message : NSObject
 @property NSDate * date;
 @property NSString * texte;
+@property NSString * login;
 @end

@@ -12,7 +12,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (weak,nonatomic) Etudiant*etudiant;
+@property Etudiant*etudiant;
 @property (strong,nonatomic) NSArray * listeCategories ;
 
 @end

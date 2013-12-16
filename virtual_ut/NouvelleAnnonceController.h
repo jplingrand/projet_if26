@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NouvelleAnnonceController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface NouvelleAnnonceController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate,UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIPickerView * pickerCategories;
 @property (weak, nonatomic) IBOutlet UITextField * titre;
 @property (weak, nonatomic) IBOutlet UITextField * prix;
 @property (weak, nonatomic) IBOutlet UITextView * contenu;
 @property(strong,nonatomic) NSArray * categories;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *boutonOffreDemande;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property  IBOutlet UITextField *activeField;
 
 -(void) getResponseFromServeur : (BOOL) reponse;
 

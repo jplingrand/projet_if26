@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Etudiant : NSObject
-@property int token ;
+@property NSString * token ;
 @property int id;
 @property NSString * prenom;
 @property NSString * nom;

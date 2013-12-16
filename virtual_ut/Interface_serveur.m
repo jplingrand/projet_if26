@@ -56,17 +56,15 @@
     
     self.responseData = [NSMutableData data];
     
-    NSString * token = [NSString stringWithFormat:@"%i",((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token];
-    NSLog(token);
+    NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
+
+    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/annonce.php?categorie=%@&titre=%@&texte=%@&type=offre&prix=%@&token=%@",categorie,titre,texte,prix,token];
     
-    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%20Service/appliVUT/annonce.php?token=%@&categorie=%@&titre=%@&texte=%@&prix=%@&type=%@", token,categorie,titre,texte,prix,type];
+   NSURL * myURL = [NSURL URLWithString:stringURL];
     
+   NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
     
-    NSURL * myURL = [NSURL URLWithString:stringURL];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+   [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
 }
 
@@ -103,10 +101,10 @@
         etudiant.ecole = [res objectForKey:@"UT"];
         etudiant.tel = [res objectForKey:@"telephone"];
         etudiant.credits = [[res objectForKey:@"creditVUTs"]intValue];
-        etudiant.token = [[res objectForKey:@"token"]intValue];
-        
+        etudiant.token = [res objectForKey:@"token"];
+
         ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant = etudiant;
-        
+    
         [(LoginController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
         
     }else if([self.view isKindOfClass:[InscriptionController class]]){
