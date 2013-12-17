@@ -13,6 +13,7 @@
 @property int id;
 @property NSString * prenom;
 @property NSString * nom;
+@property NSString * login;
 @property NSString * ecole;
 @property NSString * email;
 @property NSString * tel;

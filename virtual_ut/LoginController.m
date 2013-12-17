@@ -11,6 +11,7 @@
 #import "TabBarController.h"
 #import "CompteController.h"
 #import "UIViewController+TabBar.h"
+#import "AppDelegate.h"
 
 @implementation LoginController
 
@@ -82,6 +83,7 @@
     NSLog(@"%@",self.tabBar.etudiant);
    if(!reponse)
    {
+       ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.login = self.txtLogin.text;
        [self performSegueWithIdentifier:@"unlock" sender:self];
    }else{
        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur de connexion", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];

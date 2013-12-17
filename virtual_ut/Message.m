@@ -9,4 +9,15 @@
 #import "Message.h"
 
 @implementation Message
+
+-(id) init
+{
+    self = [super init];
+    self.login = [[NSString alloc]init];
+    self.texte = [[NSString alloc]init];
+    self.date = [[NSDate alloc]init];
+    self.ecole = [[NSString alloc]init];
+    
+    return self;
+}
 @end

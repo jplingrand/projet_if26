@@ -12,6 +12,7 @@
 #import "InscriptionController.h"
 #import "NouvelleAnnonceController.h"
 #import "RechercheController.h"
+#import "AnnonceController.h"
 
 @interface Interface_serveur : NSObject
 
@@ -21,7 +22,9 @@
 
 -(void) initAnnonce : (NouvelleAnnonceController * ) viewController withType :(NSString*)type withTitle : (NSString * )titre withTexte:(NSString*)texte withCategorie : (NSString *)categorie withPrix:(NSString*) prix;
 
--(void)initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles;
+-(void) initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles;
+
+-(void)initNouveauMessage : (AnnonceController*)viewController withMessage :(NSString *) message forAnnonce: (int) idAnnonce;
 
 @property (strong,nonatomic) UIViewController * view;
 @property (strong,nonatomic) NSString * requete;

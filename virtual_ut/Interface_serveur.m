@@ -60,7 +60,10 @@
     self.responseData = [NSMutableData data];
     
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
-
+    
+    titre = [titre stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    texte = [texte stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/posterAnnonce.php?categorie=%@&titre=%@&texte=%@&type=offre&prix=%@&token=%@",categorie,titre,texte,prix,token];
     
    NSURL * myURL = [NSURL URLWithString:stringURL];
@@ -172,6 +175,7 @@
         
         NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        
         NSLog(@"%@",listeJsonAnnonces);
         
         for (int i = 0; i<[listeJsonAnnonces count]; i++) {
@@ -182,7 +186,6 @@
             annonce.id = [[listeJsonAnnonces[i] objectForKey:@"idAnnonce"]intValue];
             annonce.date = [formatter dateFromString:[listeJsonAnnonces[i] objectForKey:@"date"]];
             annonce.prix = [[listeJsonAnnonces[i] objectForKey:@"prix"]intValue];
-            NSLog(@"le prix : %d",annonce.prix);
             annonce.texte = [listeJsonAnnonces[i] objectForKey:@"texte"];
             annonce.categorie = [listeJsonAnnonces[i] objectForKey:@"categorie"];
             annonce.login = [[listeJsonAnnonces[i] objectForKey:@"infosAnnonceur"][0] objectForKey:@"login"];
@@ -194,9 +197,9 @@
             for (int j = 0; j<[listeJsonMessages count]; j++) {
                 Message * message = [[Message alloc]init];
                 message.texte = [listeJsonMessages[j] objectForKey:@"texte"];
-                message.login = [[listeJsonMessages[j] objectForKey:@"infosEmmetteur"] objectForKey:@"login"];
-                message.ecole = [[listeJsonMessages[j] objectForKey:@"infosEmmetteur"] objectForKey:@"UT"];
-                message.date = [listeJsonMessages[j] objectForKey:@"date"];
+                message.login = [[listeJsonMessages[j] objectForKey:@"infosEmetteur"][0] objectForKey:@"login"];
+                message.ecole = [[listeJsonMessages[j] objectForKey:@"infosEmetteur"][0] objectForKey:@"UT"];
+                message.date = [formatter dateFromString:[listeJsonMessages[j] objectForKey:@"date"]];
                 [annonce.messages addObject:message];
             }
             

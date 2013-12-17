@@ -10,6 +10,8 @@
 #import "Message.h"
 #import "MessageCell.h"
 #import "Etudiant.h"
+#import "Interface_serveur.h"
+#import "UIViewController+TabBar.h"
 
 @interface AnnonceController ()
 
@@ -38,6 +40,7 @@
     self.prix.text = [NSString stringWithFormat:@"%d",self.annonce.prix];
     self.ecole.text = self.annonce.ecole;
     self.login.text = self.annonce.login;
+    
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
     self.date.text = [formatter stringFromDate:self.annonce.date];
@@ -68,13 +71,23 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     static NSString *MyIdentifier = @"cell";
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
         cell = [[MessageCell alloc] init];
     }
-    Message *message = [self.annonce.messages objectAtIndex:indexPath.row];
+    
+    Message *message = [[Message alloc]init];
+    message = [self.annonce.messages objectAtIndex:indexPath.row];
+    NSLog(@"login message : %@",message.login);
+    
     cell.texte.text = message.texte;
+    
+    NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd/MM/yyyy"];
+    cell.date.text = [formatter stringFromDate : message.date];
     cell.login.text = message.login;
     return cell;
 }
@@ -85,5 +98,10 @@
 
 - (IBAction)annulerNouveauMessage:(id)sender {
     self.nouveauMessageView.hidden = YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 @end
