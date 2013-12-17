@@ -93,7 +93,7 @@
 }
 
 - (IBAction)posterMessage:(id)sender {
-    
+    [[Interface_serveur alloc]initNouveauMessage:self withMessage:self.texteNouveauMessage.text forAnnonce:self.annonce.id];
 }
 
 - (IBAction)annulerNouveauMessage:(id)sender {
@@ -103,5 +103,20 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+-(void)getResponseFromServeur : (BOOL) reponse
+{
+    NSLog(@"%@",self.tabBar.etudiant);
+    if(!reponse)
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Votre message a bien été publié", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+        self.nouveauMessageView.hidden = YES;
+
+    }else{
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur de connexion", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+    }
 }
 @end
