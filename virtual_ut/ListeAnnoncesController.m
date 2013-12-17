@@ -125,13 +125,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
+/*
+     AnnonceController *detailViewController = [[AnnonceController alloc] init];
+     detailViewController.annonce = self.annonces[indexPath.row];
+    // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
+  */
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"segueVersAnnonce"]) {
+        NSLog(@"prepare segue vers annonce");
+        NSIndexPath * selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        AnnonceController * annonceController = [segue destinationViewController];
+        annonceController.annonce = [self.annonces objectAtIndex : selectedRowIndex.row];
+    }
 }
 
 
