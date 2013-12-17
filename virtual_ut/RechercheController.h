@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface RechercheController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+
 @property (strong, nonatomic) IBOutlet UIPickerView * pickerCategories;
 @property (weak, nonatomic) IBOutlet UITextField *prixMin;
 @property (weak, nonatomic) IBOutlet UITextField *prixMax;
 @property (weak, nonatomic) IBOutlet UITextField *champRecherche;
 @property (weak, nonatomic) IBOutlet UIButton *boutonRechercher;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *boutonOfffreDemande;
+
 @property(strong,nonatomic) NSArray * categories;
+
 -(IBAction)textFieldReturn:(id)sender;
+
+-(void) getResponseFromServeur : (BOOL) reponse;
+
 @end

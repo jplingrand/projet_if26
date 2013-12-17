@@ -11,5 +11,6 @@
 @interface AnnonceCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titre;
 @property (weak, nonatomic) IBOutlet UILabel *prix;
-
+@property (weak, nonatomic) IBOutlet UILabel *ecole;
+@property (weak, nonatomic) IBOutlet UILabel *date;
 @end

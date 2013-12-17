@@ -11,7 +11,8 @@
 @interface Annonce : NSObject
 @property int id;
 @property NSDate * date;
-@property int idEtudiant;
+@property NSString * login;
+@property NSString * ecole;
 @property NSString * categorie;
 @property NSString * titre;
 @property NSString * texte;

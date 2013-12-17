@@ -9,6 +9,9 @@
 #import "ListeAnnoncesController.h"
 #import "Annonce.h"
 #import "AnnonceCell.h"
+#import "UIViewController+TabBar.h"
+#import "AnnonceController.h"
+
 @interface ListeAnnoncesController ()
 @property (weak,nonatomic) Annonce * annonce1;
 @property (weak,nonatomic) Annonce * annonce2;
@@ -46,18 +49,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)loadInitialData {
-    Annonce *item1 = [[Annonce alloc] init];
-    item1.titre = @"Buy milk";
-    item1.prix = 11;
-    [self.annonces addObject:item1];
-    Annonce *item2 = [[Annonce alloc] init];
-    item2.titre = @"Buy eggs";
-    item2.prix = 17;
-    [self.annonces addObject:item2];
-    Annonce *item3 = [[Annonce alloc] init];
-    item3.titre = @"Read a book";
-    item3.prix = 20;
-    [self.annonces addObject:item3];
+    self.annonces = self.tabBar.listeAnnonces;
 }
 #pragma mark - Table view data source
 
@@ -81,6 +73,10 @@
     Annonce * annonce = [self.annonces objectAtIndex:indexPath.row];
     cell.titre.text = annonce.titre;
     cell.prix.text = [NSString stringWithFormat:@"%d",annonce.prix];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd-MM-yyyy"];
+    cell.date.text = [formatter stringFromDate:annonce.date];
+    cell.ecole.text = annonce.ecole;
     
     return cell;
 }
@@ -135,6 +131,8 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
 }
+
 
 @end

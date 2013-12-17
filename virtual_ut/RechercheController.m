@@ -8,6 +8,7 @@
 
 #import "RechercheController.h"
 #import "AppDelegate.h"
+#import "Interface_serveur.h"
 
 @interface RechercheController ()
 
@@ -50,34 +51,39 @@
 {
     if (sender == self.boutonRechercher)
     {
-        NSString * type = [[NSString alloc]init];
+        NSLog(@"should perform segue result recherche");
         NSString * prixMin = [[NSString alloc]init];
         NSString * prixMax = [[NSString alloc]init];
         NSString * motsCles = [[NSString alloc]init];
         NSString * categorie = [[NSString alloc]init];
         
-        if([self.boutonOfffreDemande selectedSegmentIndex]==0){
-            type = @"offre";
-        }else{
-            type = @"demande";
-        }
-        
-        if(self.prixMin.text!=nil){
+        if([self.prixMin.text length] > 0){
             prixMin = self.prixMin.text;
+        }else{
+            prixMin=[NSString stringWithFormat:@"%d",0];
         }
         
-        if(self.prixMax.text!=nil){
+        if([self.prixMax.text length ]> 0){
             prixMax = self.prixMax.text;
+        }else{
+            prixMax = [NSString stringWithFormat:@"%d",1000];
         }
-        
+
         if (self.champRecherche.text!=nil) {
             motsCles = self.champRecherche.text;
         }
         
         categorie = [self.categories objectAtIndex:[self.pickerCategories selectedRowInComponent:0]];
-        
+
+        if ([prixMin intValue]<[prixMax intValue])
+        {
+            [[Interface_serveur alloc]initRecherche:self withCategorie:categorie withPrixMin:prixMin withPrixMax:prixMax withMotsCles:motsCles];
+        }else{
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"le prix max est plus petit que le prix min", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alert show];
+        }
     }
-    return YES;
+    return NO;
 }
 
 
@@ -107,4 +113,15 @@
 {
     [self.view endEditing:YES];
 }
+-(void) getResponseFromServeur : (BOOL) reponse
+{
+    NSLog(@"serveur recherche annone getResponse avec error à: %@", reponse ? @"YES" : @"NO");
+    if ([self.tabBar.listeAnnonces count]==0) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"aucun resultat", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+    }else{
+        [self performSegueWithIdentifier:@"segueVersResultats" sender:self];
+    }
+}
+
 @end

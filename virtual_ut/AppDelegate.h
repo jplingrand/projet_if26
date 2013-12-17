@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property Etudiant*etudiant;
+@property NSMutableArray * listeAnnonces;
 @property (strong,nonatomic) NSArray * listeCategories ;
 
 @end

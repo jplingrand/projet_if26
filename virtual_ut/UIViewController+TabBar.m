@@ -20,4 +20,8 @@
 {
     return ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant;
 }
+- (NSMutableArray *) listeAnnonces
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).listeAnnonces;
+}
 @end

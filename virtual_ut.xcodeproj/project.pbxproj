@@ -257,9 +257,9 @@
 		7EA339F71844E79900FB27B8 /* virtual_ut */ = {
 			isa = PBXGroup;
 			children = (
+				7E0FF4CB18535D6400907B7F /* Model */,
 				7E0FF4DC1853713F00907B7F /* icones */,
 				7E0FF4D8185362E300907B7F /* Server */,
-				7E0FF4CB18535D6400907B7F /* Model */,
 				7E0FF4CA18535D4500907B7F /* ViewControllers */,
 				554C9791184DDB8A00404032 /* Main.storyboard */,
 				7EA33A031844E79900FB27B8 /* Images.xcassets */,

@@ -9,6 +9,8 @@
 #import "Interface_serveur.h"
 #import "AppDelegate.h"
 #import "Etudiant.h"
+#import "Annonce.h"
+#import "Message.h"
 
 @interface Interface_serveur()
 @property (nonatomic, strong) NSMutableData *responseData;
@@ -58,7 +60,7 @@
     
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
 
-    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/annonce.php?categorie=%@&titre=%@&texte=%@&type=offre&prix=%@&token=%@",categorie,titre,texte,prix,token];
+    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/posterAnnonce.php?categorie=%@&titre=%@&texte=%@&type=offre&prix=%@&token=%@",categorie,titre,texte,prix,token];
     
    NSURL * myURL = [NSURL URLWithString:stringURL];
     
@@ -66,6 +68,35 @@
     
    [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
+}
+
+-(void)initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles
+{
+    self.view = [[NouvelleAnnonceController alloc]init];
+    self.view = viewController;
+    self.responseData = [NSMutableData data];
+    NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
+
+    if(!prixMin){
+        prixMin=[NSString stringWithFormat:@"%d",0];
+    }
+    if(!prixMax) {
+        prixMax=[NSString stringWithFormat:@"%d",1000];
+    }
+    
+    if(!motsCles){
+        motsCles = @"";
+    }else{
+        motsCles = [motsCles stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    }
+    
+    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/recherche.php?token=%@&categorie=%@&prixMin=%@&prixMax=%@&mot-cles=%@",token,categorie,prixMin,prixMax,motsCles];
+    
+    NSURL * myURL = [NSURL URLWithString:stringURL];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 
@@ -107,13 +138,54 @@
     
         [(LoginController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
         
-    }else if([self.view isKindOfClass:[InscriptionController class]]){
+    }else if([self.view isKindOfClass:[InscriptionController class]])
+    {
         [(InscriptionController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
 
-    }else if ([self.view isKindOfClass:[NouvelleAnnonceController class]]){
+    }else if ([self.view isKindOfClass:[NouvelleAnnonceController class]])
+    {
         [(NouvelleAnnonceController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
+    }else if ([self.view isKindOfClass:[RechercheController class]])
+    {
+        NSMutableArray * listeJsonAnnonces = [[NSMutableArray alloc] init];
+        NSMutableArray * listeAnnonces = [[NSMutableArray alloc] init];
+        listeJsonAnnonces = [res objectForKey:@"annonces"];
+        
+        NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSLog(@"%@",listeJsonAnnonces);
+        
+        for (int i = 0; i<[listeJsonAnnonces count]; i++) {
+            
+            Annonce * annonce= [[Annonce alloc]init];
+            
+            annonce.titre = [listeJsonAnnonces[i] objectForKey:@"titre"];
+            annonce.id = [[listeJsonAnnonces[i] objectForKey:@"idAnnonce"]intValue];
+            annonce.date = [formatter dateFromString:[listeJsonAnnonces[i] objectForKey:@"date"]];
+            annonce.prix = [[listeJsonAnnonces[i] objectForKey:@"prix"]intValue];
+            NSLog(@"le prix : %d",annonce.prix);
+            annonce.texte = [listeJsonAnnonces[i] objectForKey:@"texte"];
+            annonce.categorie = [listeJsonAnnonces[i] objectForKey:@"categorie"];
+            annonce.login = [[listeJsonAnnonces[i] objectForKey:@"infosAnnonceur"][0] objectForKey:@"login"];
+            annonce.ecole = [[listeJsonAnnonces[i] objectForKey:@"infosAnnonceur"][0] objectForKey:@"UT"];
+            
+            
+            NSMutableArray * listeJsonMessages = [[NSMutableArray alloc] init];
+            listeJsonMessages = [listeJsonAnnonces[i] objectForKey:@"messages"];
+            for (int j = 0; j<[listeJsonMessages count]; j++) {
+                Message * message = [[Message alloc]init];
+                message.texte = [listeJsonMessages[j] objectForKey:@"texte"];
+                message.login = [[listeJsonMessages[j] objectForKey:@"infosEmmetteur"] objectForKey:@"login"];
+                message.ecole = [[listeJsonMessages[j] objectForKey:@"infosEmmetteur"] objectForKey:@"UT"];
+                message.date = [listeJsonMessages[j] objectForKey:@"date"];
+                [annonce.messages addObject:message];
+            }
+            
+            [listeAnnonces addObject:annonce];
+        }
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).listeAnnonces = listeAnnonces;
+        [(RechercheController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
     }
-    
 }
 
 @end

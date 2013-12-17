@@ -12,4 +12,5 @@
 @property NSDate * date;
 @property NSString * texte;
 @property NSString * login;
+@property NSString * ecole;
 @end

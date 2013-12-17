@@ -85,10 +85,12 @@
     NSString * prix = self.prix.text;
     [[Interface_serveur alloc]initAnnonce:self withType:type withTitle:titre withTexte:texte withCategorie:categorie withPrix:prix];
     
-    if ([titre length] == 0 ||[texte length]== 0||[[prix length] == 0){
+    if ([titre length] == 0 ||[texte length]== 0||[prix length] == 0)
+    {
         NSLog(@"tu reves");
     }
 }
+
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -151,7 +153,7 @@
 
 -(void) getResponseFromServeur : (BOOL) reponse
 {
-    NSLog(@"serveur ok: %@", reponse ? @"YES" : @"NO");
+    NSLog(@"serveur postage annone getResponse avec error à: %@", reponse ? @"YES" : @"NO");
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

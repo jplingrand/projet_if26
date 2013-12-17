@@ -13,4 +13,5 @@
 @interface UIViewController (TabBar)
 @property (readonly) TabBarController * tabBar;
 @property (readonly) Etudiant * etudiant;
+@property (readonly) NSMutableArray*listeAnnonces;
 @end
