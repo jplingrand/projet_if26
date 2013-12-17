@@ -207,6 +207,9 @@
         }
         ((AppDelegate *)[UIApplication sharedApplication].delegate).listeAnnonces = listeAnnonces;
         [(RechercheController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
+    }else if ([self.view isKindOfClass:[AnnonceController class]])
+    {
+        [(AnnonceController *) self.view getResponseFromServeur : [[res objectForKey:@"error"]boolValue]];
     }
 }
 

@@ -25,4 +25,5 @@
 - (IBAction)boutonNouveauMessage:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *listeMessages;
 @property Annonce * annonce;
+-(void)getResponseFromServeur : (BOOL) reponse;
 @end

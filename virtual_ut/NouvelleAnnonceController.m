@@ -83,12 +83,14 @@
     NSString * titre = self.titre.text;
     NSString * texte = self.contenu.text;
     NSString * prix = self.prix.text;
-    [[Interface_serveur alloc]initAnnonce:self withType:type withTitle:titre withTexte:texte withCategorie:categorie withPrix:prix];
     
-    if ([titre length] == 0 ||[texte length]== 0||[prix length] == 0)
-    {
-        NSLog(@"tu reves");
+    if([titre length]>0 && [texte length]>0 && [prix length]>0&&[prix intValue]!=0){
+        [[Interface_serveur alloc]initAnnonce:self withType:type withTitle:titre withTexte:texte withCategorie:categorie withPrix:prix];
+    }else{
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Completez les champs correctement", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
     }
+
 }
 
 - (void)registerForKeyboardNotifications
@@ -153,8 +155,20 @@
 
 -(void) getResponseFromServeur : (BOOL) reponse
 {
-    NSLog(@"serveur postage annone getResponse avec error à: %@", reponse ? @"YES" : @"NO");
-}
+    if(!reponse)
+    {
+
+        self.titre.text = @"";
+        self.contenu.text = @"";
+        self.prix.text=@"";
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Votre annonce a bien été publiée, retrouvez la dans 'mes annonces'", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+        
+    }else{
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur de connexion", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        [alert show];
+    }}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
