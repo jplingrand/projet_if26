@@ -597,7 +597,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alj-sj-kbq">
-                                <rect key="frame" x="98" y="397" width="137" height="30"/>
+                                <rect key="frame" x="98" y="398" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                 <state key="normal" title="Laisser un message">
@@ -618,6 +618,48 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.00042700054759999998" green="0.38297723830000002" blue="0.70017408290000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <view hidden="YES" alpha="0.89999999999999991" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vg3-pd-1G0">
+                                <rect key="frame" x="34" y="128" width="253" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abL-5u-6eS">
+                                        <rect key="frame" x="177" y="203" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Poster">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="posterMessage:" destination="rue-Ib-3Nq" eventType="touchUpInside" id="GCw-QQ-2PO"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5499999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0b-vF-8Qv">
+                                        <rect key="frame" x="20" y="56" width="203" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Poster un message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZH8-UI-TUV">
+                                        <rect key="frame" x="27" y="11" width="189" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" red="0.10926617694796892" green="0.47256874697824136" blue="0.81479193239795922" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaz-I2-f9n">
+                                        <rect key="frame" x="27" y="203" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="annuler">
+                                            <color key="titleColor" red="0.69236288270000002" green="0.10341292669497908" blue="0.098012763336037922" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="annulerNouveauMessage:" destination="rue-Ib-3Nq" eventType="touchUpInside" id="rrX-Za-M4h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -629,8 +671,10 @@
                         <outlet property="ecole" destination="ekW-SB-qmK" id="ZmK-d0-Yws"/>
                         <outlet property="listeMessages" destination="EYd-Oa-dim" id="Pye-Qh-MXI"/>
                         <outlet property="login" destination="ofJ-pf-neC" id="e2v-AK-dVF"/>
+                        <outlet property="nouveauMessageView" destination="Vg3-pd-1G0" id="65Y-vm-ijO"/>
                         <outlet property="prix" destination="Kxk-y8-K1n" id="Pxb-c2-tNj"/>
                         <outlet property="texte" destination="F4s-83-GRx" id="mbO-fP-bHo"/>
+                        <outlet property="texteNouveauMessage" destination="l0b-vF-8Qv" id="n1o-bD-W0r"/>
                         <outlet property="titre" destination="gm3-O6-aFs" id="LaZ-Ed-hoK"/>
                     </connections>
                 </viewController>

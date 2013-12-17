@@ -24,4 +24,5 @@
 -(void)initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles;
 
 @property (strong,nonatomic) UIViewController * view;
+@property (strong,nonatomic) NSString * requete;
 @end

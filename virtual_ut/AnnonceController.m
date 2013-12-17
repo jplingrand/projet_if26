@@ -52,8 +52,11 @@
 - (IBAction)boutonAcheter:(id)sender {
 }
 
-- (IBAction)boutonNouveauMessage:(id)sender {
+- (IBAction)boutonNouveauMessage:(id)sender
+{
+    self.nouveauMessageView.hidden = NO;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -76,4 +79,11 @@
     return cell;
 }
 
+- (IBAction)posterMessage:(id)sender {
+    
+}
+
+- (IBAction)annulerNouveauMessage:(id)sender {
+    self.nouveauMessageView.hidden = YES;
+}
 @end

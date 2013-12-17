@@ -11,6 +11,7 @@
 #import "Etudiant.h"
 #import "Annonce.h"
 #import "Message.h"
+#import "AnnonceController.h"
 
 @interface Interface_serveur()
 @property (nonatomic, strong) NSMutableData *responseData;
@@ -99,6 +100,24 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+-(void)initNouveauMessage : (AnnonceController*)viewController withMessage :(NSString *) message forAnnonce: (int) idAnnonce
+{
+    self.requete = [[NSString alloc]init];
+    self.requete = @"nouveauMessage";
+    self.view = [[NouvelleAnnonceController alloc]init];
+    self.view = viewController;
+    self.responseData = [NSMutableData data];
+    NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
+    message = [message stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    
+    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/posterMessage.php?token=%@&texte=%@&idAnnonce=%@",token,message,[NSString stringWithFormat:@"%d",idAnnonce]];
+    
+    NSURL * myURL = [NSURL URLWithString:stringURL];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"didReceiveResponse");

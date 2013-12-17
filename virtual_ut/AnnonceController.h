@@ -15,7 +15,12 @@
 @property (weak, nonatomic) IBOutlet UITextView *texte;
 @property (weak, nonatomic) IBOutlet UILabel *prix;
 @property (weak, nonatomic) IBOutlet UILabel *login;
+@property (weak, nonatomic) IBOutlet UITextView *texteNouveauMessage;
+- (IBAction)posterMessage:(id)sender;
+- (IBAction)annulerNouveauMessage:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *ecole;
+@property (weak, nonatomic) IBOutlet UIView *nouveauMessageView;
 - (IBAction)boutonAcheter:(id)sender;
 - (IBAction)boutonNouveauMessage:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *listeMessages;
