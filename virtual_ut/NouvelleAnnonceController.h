@@ -16,6 +16,7 @@
 @property(strong,nonatomic) NSArray * categories;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property  IBOutlet UITextField *activeField;
+@property  IBOutlet UITextView *activeView;
 
 -(void) getResponseFromServeur : (BOOL) reponse;
 

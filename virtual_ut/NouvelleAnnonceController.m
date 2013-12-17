@@ -84,6 +84,10 @@
     NSString * texte = self.contenu.text;
     NSString * prix = self.prix.text;
     [[Interface_serveur alloc]initAnnonce:self withType:type withTitle:titre withTexte:texte withCategorie:categorie withPrix:prix];
+    
+    if ([titre length] == 0 ||[texte length]== 0||[[prix length] == 0){
+        NSLog(@"tu reves");
+    }
 }
 - (void)registerForKeyboardNotifications
 {
@@ -108,8 +112,13 @@
     // Your application might not need or want this behavior.
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
+    if(self.activeField){
     if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
         CGPoint scrollPoint = CGPointMake(0.0, self.activeField.frame.origin.y-kbSize.height/2);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
+    }else if(self.activeView){
+        CGPoint scrollPoint = CGPointMake(0.0, self.activeView.frame.origin.y-kbSize.height/2);
         [self.scrollView setContentOffset:scrollPoint animated:YES];
     }
 }
@@ -118,18 +127,26 @@
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.scrollView.contentInset = contentInsets;
+    [self.scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
     self.scrollView.scrollIndicatorInsets = contentInsets;
 }
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    self.activeView = textView;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    NSLog(@"c la joie");
     self.activeField = textField;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.activeField = nil;
+}
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    self.activeView = nil;
 }
 
 -(void) getResponseFromServeur : (BOOL) reponse

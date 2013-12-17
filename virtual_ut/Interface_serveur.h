@@ -11,6 +11,7 @@
 #import "LoginController.h"
 #import "InscriptionController.h"
 #import "NouvelleAnnonceController.h"
+#import "RechercheController.h"
 
 @interface Interface_serveur : NSObject
 
@@ -20,6 +21,7 @@
 
 -(void) initAnnonce : (NouvelleAnnonceController * ) viewController withType :(NSString*)type withTitle : (NSString * )titre withTexte:(NSString*)texte withCategorie : (NSString *)categorie withPrix:(NSString*) prix;
 
+-(void)initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles;
 
 @property (strong,nonatomic) UIViewController * view;
 @end
