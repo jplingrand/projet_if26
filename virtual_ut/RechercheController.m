@@ -9,6 +9,7 @@
 #import "RechercheController.h"
 #import "AppDelegate.h"
 #import "Interface_serveur.h"
+#import "ListeAnnoncesController.h"
 
 @interface RechercheController ()
 

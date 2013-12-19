@@ -162,7 +162,7 @@
         self.contenu.text = @"";
         self.prix.text=@"";
         
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Votre annonce a bien été publiée, retrouvez la dans 'mes annonces'", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Bravo !", @"") message:NSLocalizedString(@"Votre annonce a bien été publiée, retrouvez la dans 'mes annonces'", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
         [alert show];
         
     }else{

@@ -9,21 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "Annonce.h"
 
-@interface AnnonceController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface AnnonceController : UIViewController <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *boutonAnuller;
+@property (weak, nonatomic) IBOutlet UIButton *boutonAcheter;
 @property (weak, nonatomic) IBOutlet UILabel *titre;
 @property (weak, nonatomic) IBOutlet UILabel *date;
+- (IBAction)boutonAnnuler:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *texte;
+@property (weak, nonatomic) IBOutlet UIButton *boutonNouveauMessage;
 @property (weak, nonatomic) IBOutlet UILabel *prix;
 @property (weak, nonatomic) IBOutlet UILabel *login;
-@property (weak, nonatomic) IBOutlet UITextView *texteNouveauMessage;
-- (IBAction)posterMessage:(id)sender;
-- (IBAction)annulerNouveauMessage:(id)sender;
-
 @property (weak, nonatomic) IBOutlet UILabel *ecole;
-@property (weak, nonatomic) IBOutlet UIView *nouveauMessageView;
 - (IBAction)boutonAcheter:(id)sender;
-- (IBAction)boutonNouveauMessage:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *listeMessages;
 @property Annonce * annonce;
--(void)getResponseFromServeur : (BOOL) reponse;
+-(void)achatWithError : (BOOL) reponse;
+-(void)annulationWithError : (BOOL) reponse;
+-(IBAction) unwindToAnnonce : (UIStoryboardSegue*)segue;
+
 @end

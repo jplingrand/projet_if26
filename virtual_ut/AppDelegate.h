@@ -14,6 +14,9 @@
 @property (strong, nonatomic) UIWindow *window;
 @property Etudiant*etudiant;
 @property NSMutableArray * listeAnnonces;
+@property NSMutableArray * transactionsVendeur;
+@property NSMutableArray * transactionsAcheteur;
+@property NSString * type;
 @property (strong,nonatomic) NSArray * listeCategories ;
 
 @end

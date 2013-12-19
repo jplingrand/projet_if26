@@ -14,4 +14,7 @@
 @property (readonly) TabBarController * tabBar;
 @property (readonly) Etudiant * etudiant;
 @property (readonly) NSMutableArray*listeAnnonces;
+@property (readonly) NSMutableArray*transactionsVendeur;
+@property (readonly) NSMutableArray*transactionsAcheteur;
+@property (readonly) NSString*type;
 @end

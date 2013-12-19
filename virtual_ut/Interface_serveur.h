@@ -13,6 +13,9 @@
 #import "NouvelleAnnonceController.h"
 #import "RechercheController.h"
 #import "AnnonceController.h"
+#import "MessageViewController.h"
+#import "MonCompteRootViewController.h"
+#import "TransactionController.h"
 
 @interface Interface_serveur : NSObject
 
@@ -24,7 +27,20 @@
 
 -(void) initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles;
 
--(void)initNouveauMessage : (AnnonceController*)viewController withMessage :(NSString *) message forAnnonce: (int) idAnnonce;
+-(void)initNouveauMessage : (MessageViewController*)viewController withMessage :(NSString *) message forAnnonce: (int) idAnnonce;
+
+-(void) initAchat : (AnnonceController * )viewController withAnnonce : (int) idAnnonce;
+
+-(void) initMesAnnonces : (MonCompteRootViewController*) viewController;
+
+-(void) initMesTransactions : (MonCompteRootViewController*) viewController;
+
+-(void) annulerAnnonce : (AnnonceController*) viewController withIdAnnonce : (int) id;
+
+-(void) annulerTransaction :(TransactionController *)viewController withIdTransaction : (int) id;
+
+-(void) validerTransaction :(TransactionController *)viewController withIdTransaction : (int) id withCode : (NSString *) code;
+
 
 @property (strong,nonatomic) UIViewController * view;
 @property (strong,nonatomic) NSString * requete;

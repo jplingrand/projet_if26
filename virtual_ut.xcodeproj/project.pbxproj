@@ -46,6 +46,10 @@
 		7EA33A0D1844E79900FB27B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA339F51844E79900FB27B8 /* UIKit.framework */; };
 		7EA33A151844E79900FB27B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA33A131844E79900FB27B8 /* InfoPlist.strings */; };
 		7EA33A171844E79900FB27B8 /* virtual_utTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA33A161844E79900FB27B8 /* virtual_utTests.m */; };
+		7EC8CA0418631178001462EF /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8CA0318631178001462EF /* MessageViewController.m */; };
+		7EC8CA0A18633807001462EF /* MonCompteRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8CA0918633807001462EF /* MonCompteRootViewController.m */; };
+		7EC8CA0D18637B06001462EF /* ListeTransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8CA0C18637B06001462EF /* ListeTransactionsViewController.m */; };
+		7EC8CA1018637EC4001462EF /* TransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8CA0F18637EC4001462EF /* TransactionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +126,14 @@
 		7EA33A121844E79900FB27B8 /* virtual_utTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "virtual_utTests-Info.plist"; sourceTree = "<group>"; };
 		7EA33A141844E79900FB27B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7EA33A161844E79900FB27B8 /* virtual_utTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = virtual_utTests.m; sourceTree = "<group>"; };
+		7EC8CA0218631178001462EF /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		7EC8CA0318631178001462EF /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		7EC8CA0818633807001462EF /* MonCompteRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonCompteRootViewController.h; sourceTree = "<group>"; };
+		7EC8CA0918633807001462EF /* MonCompteRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonCompteRootViewController.m; sourceTree = "<group>"; };
+		7EC8CA0B18637B06001462EF /* ListeTransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeTransactionsViewController.h; sourceTree = "<group>"; };
+		7EC8CA0C18637B06001462EF /* ListeTransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeTransactionsViewController.m; sourceTree = "<group>"; };
+		7EC8CA0E18637EC4001462EF /* TransactionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionCell.h; sourceTree = "<group>"; };
+		7EC8CA0F18637EC4001462EF /* TransactionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +193,14 @@
 				7E712132185F4C9200B2039B /* AnnonceCell.m */,
 				7E712134185F59A900B2039B /* MessageCell.h */,
 				7E712135185F59A900B2039B /* MessageCell.m */,
+				7EC8CA0218631178001462EF /* MessageViewController.h */,
+				7EC8CA0318631178001462EF /* MessageViewController.m */,
+				7EC8CA0818633807001462EF /* MonCompteRootViewController.h */,
+				7EC8CA0918633807001462EF /* MonCompteRootViewController.m */,
+				7EC8CA0B18637B06001462EF /* ListeTransactionsViewController.h */,
+				7EC8CA0C18637B06001462EF /* ListeTransactionsViewController.m */,
+				7EC8CA0E18637EC4001462EF /* TransactionCell.h */,
+				7EC8CA0F18637EC4001462EF /* TransactionCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -404,6 +424,8 @@
 				554C9798184DDFE700404032 /* RechercheController.m in Sources */,
 				7E4737901854893800B1F4A3 /* TabBarController.m in Sources */,
 				7E0FF4D118535E1000907B7F /* Transaction.m in Sources */,
+				7EC8CA0418631178001462EF /* MessageViewController.m in Sources */,
+				7EC8CA1018637EC4001462EF /* TransactionCell.m in Sources */,
 				7E0FF4DB1853630F00907B7F /* Interface_serveur.m in Sources */,
 				554C979E184DE6D200404032 /* TransactionController.m in Sources */,
 				7EA33A021844E79900FB27B8 /* AppDelegate.m in Sources */,
@@ -411,6 +433,7 @@
 				7EA339FE1844E79900FB27B8 /* main.m in Sources */,
 				55C78E3A18450030007650E9 /* LoginController.m in Sources */,
 				55F129971845032300D6231E /* CompteController.m in Sources */,
+				7EC8CA0A18633807001462EF /* MonCompteRootViewController.m in Sources */,
 				55F1299D1845034800D6231E /* ListeAnnoncesController.m in Sources */,
 				7E712133185F4C9200B2039B /* AnnonceCell.m in Sources */,
 				554C97A1184DE75300404032 /* ActualiteController.m in Sources */,
@@ -418,6 +441,7 @@
 				554C979B184DE02100404032 /* AnnonceController.m in Sources */,
 				7E0FF4D718535F8E00907B7F /* Message.m in Sources */,
 				7E0FF4CE18535D8B00907B7F /* Annonce.m in Sources */,
+				7EC8CA0D18637B06001462EF /* ListeTransactionsViewController.m in Sources */,
 				7E712136185F59A900B2039B /* MessageCell.m in Sources */,
 				7E0FF4D418535EFE00907B7F /* Proposition.m in Sources */,
 				55F129A7184503B800D6231E /* HistoriqueController.m in Sources */,

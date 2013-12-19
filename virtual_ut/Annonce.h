@@ -19,4 +19,5 @@
 @property int prix;
 @property BOOL valide;
 @property NSMutableArray * messages;
+@property int idVendeur;
 @end

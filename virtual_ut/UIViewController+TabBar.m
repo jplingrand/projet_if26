@@ -24,4 +24,16 @@
 {
     return ((AppDelegate *)[UIApplication sharedApplication].delegate).listeAnnonces;
 }
+- (NSMutableArray *) transactionsAcheteur
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).transactionsAcheteur;
+}
+- (NSMutableArray *) transactionsVendeur
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).transactionsVendeur;
+}
+- (NSString *) type
+{
+    return ((AppDelegate *)[UIApplication sharedApplication].delegate).type;
+}
 @end

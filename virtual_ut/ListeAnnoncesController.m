@@ -11,13 +11,7 @@
 #import "AnnonceCell.h"
 #import "UIViewController+TabBar.h"
 #import "AnnonceController.h"
-
-@interface ListeAnnoncesController ()
-@property (weak,nonatomic) Annonce * annonce1;
-@property (weak,nonatomic) Annonce * annonce2;
-@property (weak,nonatomic) Annonce * annonce3;
-
-@end
+#import "AppDelegate.h"
 
 @implementation ListeAnnoncesController
 
@@ -25,7 +19,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        // custom init
     }
     return self;
 }
@@ -35,12 +29,6 @@
     [super viewDidLoad];
     self.annonces = [[NSMutableArray alloc]init];
     [self loadInitialData];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +37,28 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)loadInitialData {
-    self.annonces = self.tabBar.listeAnnonces;
+    NSString * type =  self.tabBar.type;
+    if ([type isEqualToString: @"mesAnnoncesEnCours"]||[type isEqualToString:@"mesAnnoncesArchivees"]) {
+        bool valide;
+        if ([type isEqualToString: @"mesAnnoncesEnCours"]) {
+            self.title = @"mes annonces en cours";
+            valide  = YES;
+        }else{
+            valide  = NO;
+              self.title = @"mes annonces archivées";
+        }
+        for (int i=0; i<[self.tabBar.listeAnnonces count]; i++) {
+            Annonce * annonce = self.tabBar.listeAnnonces[i];
+            if (annonce.valide & valide) {
+                [self.annonces addObject:annonce];
+            }else if (!annonce.valide&!valide){
+                [self.annonces addObject:annonce];
+            }
+        }
+    }else{
+        self.annonces = self.tabBar.listeAnnonces;
+    }
+    [self.annoncesTableView reloadData];
 }
 #pragma mark - Table view data source
 

@@ -13,8 +13,10 @@
 
 -(id)init
 {
-    self.listeCategories = [[NSArray alloc]initWithObjects:@"Electromenager",@"Covoiturage",@"high-tech",@"fringues",@"billeterie",@"services",@"vélos",@"hors catégorie",@"ameublement", nil];
+    
     self = [super init];
+    self.listeCategories = [[NSArray alloc]initWithObjects:@"Electromenager",@"Covoiturage",@"high-tech",@"fringues",@"billeterie",@"services",@"vélos",@"hors catégorie",@"ameublement", nil];
+    self.listeAnnonces = [[NSMutableArray alloc]init];
     self.etudiant = [[Etudiant alloc]init];
     return self;
 }

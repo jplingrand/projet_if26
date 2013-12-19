@@ -7,14 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Etudiant.h"
 @interface Transaction : NSObject
-@property int * id;
-@property int * acheteur;
-@property int * vendeur;
-@property int * noteAcheteur;
-@property int * noteVendeur;
-@property NSString * status;
-@property int * prix;
+
+@property int id;
+@property int idAcheteur;
+@property int idVendeur;
+@property int noteAcheteur;
+@property int noteVendeur;
+@property NSString * statut;
 @property NSString * titre;
+@property int prix;
+@property NSString * code;
+@property Etudiant*etudiant;
+
 @end

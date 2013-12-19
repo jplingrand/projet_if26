@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ListeAnnoncesController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITableView *annoncesTableView;
 @property NSMutableArray * annonces;
-
 @end

@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UITextView *texte;
 @property (weak, nonatomic) IBOutlet UILabel *login;
+@property (weak, nonatomic) IBOutlet UILabel *ecole;
 
 @end
