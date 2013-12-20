@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *boutonAcheter;
 @property (weak, nonatomic) IBOutlet UILabel *titre;
 @property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet UILabel *categorie;
 - (IBAction)boutonAnnuler:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *texte;
 @property (weak, nonatomic) IBOutlet UIButton *boutonNouveauMessage;

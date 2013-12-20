@@ -41,13 +41,12 @@
     self.prix.text = [NSString stringWithFormat:@"%d",self.annonce.prix];
     self.ecole.text = self.annonce.ecole;
     self.login.text = self.annonce.login;
-
+    self.categorie.text = self.annonce.categorie;
+    
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
     self.date.text = [formatter stringFromDate:self.annonce.date];
     
-    NSLog(@"annonce avec valllide à : %hhd id vendeur : %d et id etu : %d", self.annonce.valide,self.annonce.idVendeur, self.tabBar.etudiant.id);
-
     if(self.annonce.valide){
         self.boutonNouveauMessage.hidden = NO;
         if (self.annonce.idVendeur  == self.tabBar.etudiant.id) {
@@ -112,7 +111,12 @@
         if(self.annonce.idVendeur == self.tabBar.etudiant.id){
             [[Interface_serveur alloc]annulerAnnonce:self withIdAnnonce:self.annonce.id];
         }else{
-            [[Interface_serveur alloc]initAchat:self withAnnonce:self.annonce.id];
+            if(self.annonce.prix>self.tabBar.etudiant.credits){
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Votre solde est insuffisant", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+                [alert show];
+            }else{
+                [[Interface_serveur alloc]initAchat:self withAnnonce:self.annonce.id];
+            }
         }
     }
     else if (buttonIndex == 1)

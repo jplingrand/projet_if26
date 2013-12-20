@@ -12,7 +12,7 @@
 #import "ListeAnnoncesController.h"
 
 @interface RechercheController ()
-
+@property IBOutlet UITextField * activeField;
 @end
 
 @implementation RechercheController 
@@ -29,15 +29,65 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    //self.pickerCategories = [[UIPickerView alloc]init];
+
     self.pickerCategories.dataSource = self;
     self.pickerCategories.delegate = self;
     self.categories = [[NSArray alloc]init];
     self.categories = ((AppDelegate *)[UIApplication sharedApplication].delegate).listeCategories;
     [self.pickerCategories reloadAllComponents];
+
+    [self registerForKeyboardNotifications];
+
 }
 
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(320, 910)];
+}
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+            CGPoint scrollPoint = CGPointMake(0.0, self.activeField.frame.origin.y+kbSize.height/2);
+            [self.scrollView setContentOffset:scrollPoint animated:YES];
+        }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    [self.scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.activeField = nil;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

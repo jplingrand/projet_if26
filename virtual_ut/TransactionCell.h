@@ -11,5 +11,6 @@
 @interface TransactionCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titre;
 @property (weak, nonatomic) IBOutlet UILabel *prix;
+@property (weak, nonatomic) IBOutlet UILabel *statut;
 
 @end

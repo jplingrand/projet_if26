@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RechercheController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface RechercheController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIPickerView * pickerCategories;
 @property (weak, nonatomic) IBOutlet UITextField *prixMin;
 @property (weak, nonatomic) IBOutlet UITextField *prixMax;
 @property (weak, nonatomic) IBOutlet UITextField *champRecherche;
 @property (weak, nonatomic) IBOutlet UIButton *boutonRechercher;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *boutonOfffreDemande;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property(strong,nonatomic) NSArray * categories;
 

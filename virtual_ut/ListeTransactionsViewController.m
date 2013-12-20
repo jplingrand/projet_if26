@@ -87,7 +87,7 @@
     Transaction * transaction = [self.transactions objectAtIndex:indexPath.row];
     cell.titre.text = transaction.titre;
     cell.prix.text = [ NSString stringWithFormat:@"%d",transaction.prix];
-    
+    cell.statut.text = transaction.statut;
     return cell;
 }
 

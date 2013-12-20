@@ -251,7 +251,31 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog(@"Connection failed: %@", [error description]);
-    [(LoginController *)self.view getResponseFromServeur : YES];
+    if([self.view isKindOfClass:[LoginController class]]){
+        [(LoginController *)self.view getResponseFromServeur : YES];
+    }else if ([self.view isKindOfClass:[InscriptionController class]]){
+        [(InscriptionController *)self.view getResponseFromServeur : YES];
+    }else if ([self.view isKindOfClass:[NouvelleAnnonceController class]]){
+        [(NouvelleAnnonceController *)self.view getResponseFromServeur : YES];
+    }else if ([self.view isKindOfClass:[RechercheController class]]){
+        [(RechercheController *)self.view getResponseFromServeur : YES];
+    }else if ([self.view isKindOfClass:[MessageViewController class]]){
+        [(MessageViewController *)self.view getResponseFromServeur : YES];
+    }else if ([self.view isKindOfClass:[AnnonceController class]]){
+        if ([self.requete isEqualToString:@"achat"]) {
+            [(AnnonceController *)self.view  achatWithError : YES];
+        }else if([self.requete isEqualToString:@"annulation"]){
+            [(AnnonceController *)self.view annulationWithError : YES];
+        }
+    }else if ([self.view isKindOfClass:[TransactionController class]]){
+        if ([self.requete isEqualToString:@"validation"]) {
+            [(TransactionController *)self.view  valideeWithError : YES];
+        }else if([self.requete isEqualToString:@"annulation"]){
+            [(TransactionController *)self.view annuleeWithError : YES];
+        }
+    }else if ([self.view isKindOfClass:[MonCompteRootViewController class]]){
+        [(MonCompteRootViewController *)self.view getResponseWithError : YES];
+    }
 }
 
 -(NSMutableArray*)jsonAnnoncesToAnnonces : (NSMutableArray *) listeJsonAnnonces
@@ -351,7 +375,6 @@
     }
     else if ([self.view isKindOfClass:[MonCompteRootViewController class]])
     {
-        NSLog(@"%@",res);
         if([self.requete isEqualToString:@"mes annonces"])
         {
             NSMutableArray * listeJsonAnnonces = [[NSMutableArray alloc] init];

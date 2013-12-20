@@ -9,6 +9,7 @@
 #import "TransactionController.h"
 #import "Interface_serveur.h"
 #import "UIViewController+TabBar.h"
+#import "AppDelegate.h"
 @interface TransactionController ()
 
 @end
@@ -45,10 +46,32 @@
         }
     }else{
         self.confirmationAnnulationView.hidden = YES;
+        NSLog(@"%@",self.transaction.statut);
+        if ([self.transaction.statut isEqualToString:@"Validée"]) {
+            self.consigne.text = @"cette transaction a été validée";
+        }else if ([self.transaction.statut isEqualToString:@"Annulée"]){
+            self.consigne.text = @"cette transaction a été annulée";
+        }
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 
 }
-
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    //Assign new frame to your view
+    [self.view setFrame:CGRectMake(0,-150,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
+    
+}
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(320, 910)];
+}
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    [self.view setFrame:CGRectMake(0,0,320,460)];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -108,6 +131,7 @@
     }else{
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"confirmation", @"") message:NSLocalizedString(@"la transaction a bien été validée", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
     [alert show];
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.credits=+self.transaction.prix;
         [self performSegueWithIdentifier:@"transactionToRoot" sender:self];
 
     }

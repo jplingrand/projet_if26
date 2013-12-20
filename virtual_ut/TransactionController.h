@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *champCode;
 @property (weak, nonatomic) IBOutlet UILabel *tel;
 @property Transaction * transaction;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *prix;
 @property (weak, nonatomic) IBOutlet UIView *confirmationAnnulationView;
 @property (weak, nonatomic) IBOutlet UILabel *consigne;

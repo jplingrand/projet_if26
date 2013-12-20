@@ -92,7 +92,11 @@
     }
 
 }
-
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(320, 910)];
+}
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
