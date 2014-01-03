@@ -10,11 +10,14 @@
 #import "AppDelegate.h"
 
 
+
 @implementation UIViewController (TabBar)
  - (TabBarController *)tabBar
 {
     return (TabBarController *)self.tabBarController;
 }
+
+// Tous les attributs sont redirigés vers l'appdelegate
 
 - (Etudiant *) etudiant
 {

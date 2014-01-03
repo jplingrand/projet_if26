@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 #import "Etudiant.h"
 @interface TabBarController : UITabBarController
-@property (weak,nonatomic) NSString * toto;
 @end

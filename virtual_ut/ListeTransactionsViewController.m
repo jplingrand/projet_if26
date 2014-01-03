@@ -35,8 +35,10 @@
 
 -(void)loadInitialData
 {
+    // la var globale type indique le type d'infos à afficher
+    // transactions vendeur ou acheteur
     NSString * type = self.tabBar.type;
-    NSLog(@"load initia data");
+
     if([type isEqualToString:@"mesTransactionsVendeur"]||[type isEqualToString:@"mesTransactionsAcheteur"]){
         bool vendeur;
         if([type isEqualToString:@"mesTransactionsVendeur"]){
@@ -47,13 +49,6 @@
             vendeur = NO;
             self.title = @"transactions acheteur";
             self.transactions = self.tabBar.transactionsAcheteur;
-            NSLog(@"transactions acheteur : %d",[self.transactions count]);
-            Transaction * tran = [[Transaction alloc]init];
-            tran = self.transactions[0];
-            NSLog(@"transaction 1 : %@",tran.titre);
-            NSLog(@"%@",tran.statut);
-            NSLog(@"%d",tran.prix);
-
         }
     }
     [self.transactionsTableView reloadData];

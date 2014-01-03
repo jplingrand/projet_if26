@@ -10,30 +10,25 @@
 #import "AppDelegate.h"
 #import "Interface_serveur.h"
 
-@interface NouvelleAnnonceController ()
-
-@end
-
 
 @implementation NouvelleAnnonceController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Pour pouvoir gérer la sortie du clavier
     self.titre.delegate = self;
     self.contenu.delegate = self;
     self.prix.delegate = self;
-    
     [self registerForKeyboardNotifications];
+    
+    // Pour pourvoir gérer la liste des catégories
     self.pickerCategories.dataSource = self;
     self.pickerCategories.delegate = self;
     self.categories = [[NSArray alloc]init];
@@ -44,7 +39,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(IBAction)unwindToConnexion:(UIStoryboardSegue *)segue
@@ -54,17 +48,14 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
 {
-    
     return [self.categories objectAtIndex:row];
-    
 }
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
-    
 }
 
-// returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
     return [self.categories count];
@@ -76,6 +67,7 @@
 }
 
 - (IBAction)actionPoster:(id)sender {
+  // A l'origine type = offre ou demande . Limité à offre dans cette version de l'app
     NSString * type = [[NSString alloc]init];
     type = @"offre";
 
@@ -84,6 +76,7 @@
     NSString * texte = self.contenu.text;
     NSString * prix = self.prix.text;
     
+    // On poste une annonce que si le titre, le contenu et le prix sont indiqués. intValue renvoie 0 si caractères non numériques
     if([titre length]>0 && [texte length]>0 && [prix length]>0&&[prix intValue]!=0){
         [[Interface_serveur alloc]initAnnonce:self withType:type withTitle:titre withTexte:texte withCategorie:categorie withPrix:prix];
     }else{
@@ -97,6 +90,7 @@
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setContentSize:CGSizeMake(320, 910)];
 }
+
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -107,7 +101,6 @@
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
 
-// Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
@@ -115,9 +108,6 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
-    
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your application might not need or want this behavior.
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     if(self.activeField){
@@ -131,7 +121,6 @@
     }
 }
 
-// Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
@@ -159,16 +148,15 @@
 
 -(void) getResponseFromServeur : (BOOL) reponse
 {
+// On averti l'utilisateur , si erreur ou pas.
     if(!reponse)
     {
-
         self.titre.text = @"";
         self.contenu.text = @"";
         self.prix.text=@"";
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Bravo !", @"") message:NSLocalizedString(@"Votre annonce a bien été publiée, retrouvez la dans 'mes annonces'", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
         [alert show];
-        
     }else{
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur de connexion", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
         [alert show];

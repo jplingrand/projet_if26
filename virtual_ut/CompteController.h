@@ -5,8 +5,10 @@
 //  Created by if26 on 26/11/13.
 //  Copyright (c) 2013 jean-philippe LINGRAND. All rights reserved.
 //
+// View controller qui se charge d'afficher les infos personnelles
 
 #import <UIKit/UIKit.h>
+
 
 @interface CompteController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *prenom;

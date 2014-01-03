@@ -5,6 +5,7 @@
 //  Created by jean-philippe LINGRAND on 07/12/2013.
 //  Copyright (c) 2013 jean-philippe LINGRAND. All rights reserved.
 //
+// Objet faisant l'interface entre l'app et le serveur.
 
 #import <Foundation/Foundation.h>
 #import "UIViewController+TabBar.h"
@@ -18,6 +19,14 @@
 #import "TransactionController.h"
 
 @interface Interface_serveur : NSObject
+
+//
+//
+// Une methode d'initialisation pour chaque requete. L'initialisation se fait en envoyant le pointeur du view controller afin de lui renvoyer la réponse. Chaque réponse est envoyée avec response  =  error
+//
+//
+//
+//
 
 -(void)initConnexion : (NSString *) login withPassword :(NSString*)password fromViewController:(LoginController *)viewController;
 

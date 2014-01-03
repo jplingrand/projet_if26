@@ -18,9 +18,6 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // custom init
-    }
     return self;
 }
 
@@ -34,10 +31,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+// Fonction qui charge la liste d'annonces
 - (void)loadInitialData {
     NSString * type =  self.tabBar.type;
+    
+    // Si liste d'annonces personnelles, on doit trier en fonction de valide ou non
     if ([type isEqualToString: @"mesAnnoncesEnCours"]||[type isEqualToString:@"mesAnnoncesArchivees"]) {
         bool valide;
         if ([type isEqualToString: @"mesAnnoncesEnCours"]) {
@@ -55,9 +55,13 @@
                 [self.annonces addObject:annonce];
             }
         }
+        
+    // Sinon si c'est le resultat d'une recherche, aucun tri
     }else{
         self.annonces = self.tabBar.listeAnnonces;
     }
+    
+    // On rafraichi la liste
     [self.annoncesTableView reloadData];
 }
 #pragma mark - Table view data source
@@ -90,62 +94,15 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-/*
-     AnnonceController *detailViewController = [[AnnonceController alloc] init];
-     detailViewController.annonce = self.annonces[indexPath.row];
-    // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-  */
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"segueVersAnnonce"]) {
-        NSLog(@"prepare segue vers annonce");
         NSIndexPath * selectedRowIndex = [self.tableView indexPathForSelectedRow];
         AnnonceController * annonceController = [segue destinationViewController];
         annonceController.annonce = [self.annonces objectAtIndex : selectedRowIndex.row];

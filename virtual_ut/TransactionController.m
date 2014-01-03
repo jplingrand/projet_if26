@@ -28,25 +28,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // On initialise les champs
     self.titre.text = self.transaction.titre;
     self.prix.text = [NSString stringWithFormat:@"%d VUTs",self.transaction.prix];
     self.prenom.text = self.transaction.etudiant.prenom;
     self.nom.text = self.transaction.etudiant.nom;
     self.email.text = self.transaction.etudiant.email;
     self.tel.text = self.transaction.etudiant.tel;
+    
+    // Si la transaction est en cours,
     if([self.transaction.statut isEqualToString:@"En cours"]){
+        // Si le code est présent dans la transaction, on l'affiche
         if(self.transaction.code!=nil&&![self.transaction.code isEqualToString:@""]){
             self.boutonValider.hidden = YES;
             self.champCode.text = self.transaction.code;
             self.champCode.enabled = NO;
             self.consigne.text = @"communiquez ce code au vendeur une fois la transaction opérée";
+        // Sinon on laisse le champ éditable
         }else{
             self.champCode.enabled = YES;
             self.consigne.text = @"Une fois la transaction opérée, entrez le code fourni par l'acheteur";
         }
+    
+    // Si la transaction n'est pas en cours on retire les boutons d'annulation et de validation et on affiche le statut
     }else{
         self.confirmationAnnulationView.hidden = YES;
-        NSLog(@"%@",self.transaction.statut);
         if ([self.transaction.statut isEqualToString:@"Validée"]) {
             self.consigne.text = @"cette transaction a été validée";
         }else if ([self.transaction.statut isEqualToString:@"Annulée"]){
@@ -59,9 +66,7 @@
 }
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    //Assign new frame to your view
-    [self.view setFrame:CGRectMake(0,-150,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
-    
+    [self.view setFrame:CGRectMake(0,-150,320,460)];
 }
 -(void) viewDidAppear:(BOOL)animated
 {
@@ -75,12 +80,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)actionAnnuler:(id)sender {
     [self showConfirmAlertWithText:@"Confirmez-vous l'annulation de la transaction?" andWithTitle:@"t'es sûr?"];
 }
+
 - (void)showConfirmAlertWithText : (NSString * )message andWithTitle:(NSString *)title
 {
     UIAlertView *alert = [[UIAlertView alloc] init];

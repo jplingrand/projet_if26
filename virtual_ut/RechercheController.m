@@ -20,20 +20,22 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    // on indique que c'est le view controller qui va gérer le comportement et les données du scrollview
     self.pickerCategories.dataSource = self;
     self.pickerCategories.delegate = self;
+    
+    // initialisation de la liste des catégories depuis la var globale listeCategorie dans le appDelegate
     self.categories = [[NSArray alloc]init];
     self.categories = ((AppDelegate *)[UIApplication sharedApplication].delegate).listeCategories;
+    
+    // on rafraichi le scrollview
     [self.pickerCategories reloadAllComponents];
 
     [self registerForKeyboardNotifications];
@@ -54,7 +56,7 @@
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setContentSize:CGSizeMake(320, 910)];
 }
-// Called when the UIKeyboardDidShowNotification is sent.
+
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
@@ -71,7 +73,6 @@
         }
 }
 
-// Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
@@ -91,7 +92,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(IBAction)unwindToConnexion:(UIStoryboardSegue *)segue
@@ -102,7 +102,6 @@
 {
     if (sender == self.boutonRechercher)
     {
-        NSLog(@"should perform segue result recherche");
         NSString * prixMin = [[NSString alloc]init];
         NSString * prixMax = [[NSString alloc]init];
         NSString * motsCles = [[NSString alloc]init];
@@ -150,7 +149,6 @@
     
 }
 
-// returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
     return [self.categories count];
@@ -166,10 +164,11 @@
 }
 -(void) getResponseFromServeur : (BOOL) reponse
 {
-    NSLog(@"serveur recherche annone getResponse avec error à: %@", reponse ? @"YES" : @"NO");
+    // si aucun resultat on averti
     if ([self.tabBar.listeAnnonces count]==0) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"aucun resultat", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
         [alert show];
+    // Sinon on va vers la page des résultats
     }else{
         [self performSegueWithIdentifier:@"segueVersResultats" sender:self];
     }

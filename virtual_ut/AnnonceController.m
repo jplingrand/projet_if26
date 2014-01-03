@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Permet de gérer la scroll view des messages
     self.listeMessages.dataSource = self;
     self.listeMessages.delegate = self;
 
@@ -47,8 +47,11 @@
     [formatter setDateFormat:@"dd/MM/yyyy"];
     self.date.text = [formatter stringFromDate:self.annonce.date];
     
+    // Si annonce valide on affiche le bouton de nouveau message
     if(self.annonce.valide){
         self.boutonNouveauMessage.hidden = NO;
+        
+        // Si le user = vendeur on affiche le bouton annuler et on cache le bouton acheter
         if (self.annonce.idVendeur  == self.tabBar.etudiant.id) {
             self.login.text = @"toi";
             self.ecole.text = self.tabBar.etudiant.ecole;
@@ -58,6 +61,8 @@
             
             self.boutonAcheter.hidden = YES;
             [self.boutonAcheter setEnabled:YES];
+        
+        // Sinon on cache le bouton Annuler et on affiche le bouton acheter
         }else{
             self.boutonAnuller.hidden = YES;
             [self.boutonAnuller setEnabled:NO];
@@ -65,6 +70,8 @@
             self.boutonAcheter.hidden = NO;
             [self.boutonAcheter setEnabled:YES];
         }
+    
+    // Si annonce non valide, on cache le bouton nouveau message, le bouton annuler et le bouton acheter
     }else{
         self.boutonNouveauMessage.hidden = YES;
         [self.boutonNouveauMessage setEnabled:NO];
@@ -81,7 +88,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)boutonAcheter:(id)sender {
@@ -93,6 +99,7 @@
 - (IBAction)boutonAnnuler:(id)sender {
         [self showConfirmAlertWithText:@"confirmez vous l'annulation de votre annonce?" andWithTitle:@"confirmer votre annulation"];
 }
+
 - (void)showConfirmAlertWithText : (NSString * )message andWithTitle:(NSString *)title
 {
     UIAlertView *alert = [[UIAlertView alloc] init];
@@ -108,8 +115,11 @@
 {
     if (buttonIndex == 0)
     {
+        // Si le user = vendeur alors requete annuler
         if(self.annonce.idVendeur == self.tabBar.etudiant.id){
             [[Interface_serveur alloc]annulerAnnonce:self withIdAnnonce:self.annonce.id];
+       
+        // sinon on test le solde et si suffisant on fait la requete acheter
         }else{
             if(self.annonce.prix>self.tabBar.etudiant.credits){
                 UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Votre solde est insuffisant", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
@@ -118,10 +128,6 @@
                 [[Interface_serveur alloc]initAchat:self withAnnonce:self.annonce.id];
             }
         }
-    }
-    else if (buttonIndex == 1)
-    {
-        NSLog(@"no");
     }
 }
 
@@ -145,6 +151,7 @@
 }
 
 
+// Permet le chargement des messages
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
@@ -171,22 +178,26 @@
 {
     [self.view endEditing:YES];
 }
+
+// Fonction de retour depuis la vue de nouveau message
 -(void)unwindToAnnonce : (UIStoryboardSegue*)segue
 {
     MessageViewController * source = [segue sourceViewController];
     Message * message = source.message;
+    
+    // Si bouton poster alors message != nil
     if (message!=nil) {
         [self.annonce.messages addObject:message];
         [self.listeMessages reloadData];
     }
 }
 
+// réponse serveur de la requete d'achat
 -(void)achatWithError:(BOOL)reponse
 {
-
+        // Response = erreur, on averti le user. Si pas d'erreur on repart au menu principal (de mon compte)
         if(!reponse)
         {
-            
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"C'est tout bon", @"") message:NSLocalizedString(@"Votre achat est confirmé, retrouvez le dans 'mes transactions / en cours' ", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
             [self performSegueWithIdentifier:@"unwindToRoot" sender:self];
@@ -195,16 +206,18 @@
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
         }
-
 }
+
+// Fonction réponse serveur pour la requete d'annulation
 -(void)annulationWithError:(BOOL)reponse
 {
-    
+    // On averti le user et on repart au menu principal si erreur == NO;
     if(!reponse)
     {
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"C'est tout bon", @"") message:NSLocalizedString(@"Votre a bien été retirée des annonces dispos, retrouvez là dans 'mes annonces / archivées ", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
         [alert show];
+        [self performSegueWithIdentifier:@"unwindToRoot" sender:self];
         
     }else{
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Erreur", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];

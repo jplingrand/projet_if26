@@ -22,6 +22,8 @@
 
 @synthesize responseData = _responseData;
 
+
+// requete de connexion
 -(void)initConnexion : (NSString *)login withPassword :(NSString*)password fromViewController:(LoginController *)viewController
 {
     self.view = [[LoginController alloc]init];
@@ -37,12 +39,18 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// requete d'inscription
 -(void)initInscription : (InscriptionController *) viewController withNom : (NSString *) nom withPrenom : (NSString *) prenom withEmail : (NSString* ) email withTel : (NSString *) tel withEcole :(NSString *) ecole withLogin : (NSString*) login withPassword : (NSString *) password
 {
     self.view = [[InscriptionController alloc]init];
     self.view = viewController;
     
     self.responseData = [NSMutableData data];
+    
+     login = [login stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     prenom = [prenom stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     nom = [nom stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     tel = [tel stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
    NSString * stringURL = [NSString stringWithFormat:@"http://localhost:8888/Web%%20Service/appliVUT/inscription.php?login=%@&password=%@&nom=%@&prenom=%@&UT=%@&telephone=%@&email=%@", login, password,nom,prenom,ecole,tel,email];
  
@@ -53,6 +61,7 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// requete pour poster une nouvelle annonce
 -(void) initAnnonce : (NouvelleAnnonceController * ) viewController withType :(NSString*)type withTitle : (NSString * )titre withTexte:(NSString*)texte withCategorie : (NSString *)categorie withPrix:(NSString*) prix
 {
     self.view = [[NouvelleAnnonceController alloc]init];
@@ -75,6 +84,8 @@
     
 }
 
+
+// requete pour réaliser une recherche personnalisée
 -(void)initRecherche : (RechercheController * ) viewController withCategorie : (NSString * )categorie withPrixMin : (NSString *) prixMin withPrixMax : (NSString*)prixMax withMotsCles : (NSString*)motsCles
 {
     ((AppDelegate *)[UIApplication sharedApplication].delegate).type = @"recherche";
@@ -96,9 +107,8 @@
     }else{
         motsCles = [motsCles stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
-    NSLog(@"recherche par categorie avant encoding : %@",categorie);
     categorie = [categorie stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",categorie);
+
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/recherche.php?token=%@&categorie=%@&prixMin=%@&prixMax=%@&mot-cles=%@",token,categorie,prixMin,prixMax,motsCles];
     
     NSURL * myURL = [NSURL URLWithString:stringURL];
@@ -108,23 +118,26 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// requete pour poster un message sur une annonce
 -(void)initNouveauMessage : (MessageViewController*)viewController withMessage :(NSString *) message forAnnonce: (int) idAnnonce
 {
     self.view = [[NouvelleAnnonceController alloc]init];
     self.view = viewController;
+    
     self.responseData = [NSMutableData data];
+    
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
+   
     message = [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/posterMessage.php?token=%@&texte=%@&idAnnonce=%@",token,message,[NSString stringWithFormat:@"%d",idAnnonce]];
     
     NSURL * myURL = [NSURL URLWithString:stringURL];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// requete pour acheter un objet
 -(void) initAchat : (AnnonceController * )viewController withAnnonce : (int) idAnnonce
 {
     self.requete = [[NSString alloc]init];
@@ -134,113 +147,113 @@
     self.responseData = [NSMutableData data];
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
     
-    NSLog(@"achat avec token : %@ et idAnnonce : %d",token,idAnnonce);
-    
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/demarrerTransaction.php?token=%@&idAnnonce=%d",token,idAnnonce];
  
     NSURL * myURL = [NSURL URLWithString:stringURL];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
 }
+
+// requete pour récuperer ses annocnes
 -(void) initMesAnnonces : (MonCompteRootViewController*) viewController
 {
     self.requete = [[NSString alloc]init];
     self.requete = @"mes annonces";
+    
     self.view = [[NouvelleAnnonceController alloc]init];
     self.view = viewController;
+    
     self.responseData = [NSMutableData data];
+
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
-    NSLog(@"token : %@",token);
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/mesAnnonces.php?token=%@",token];
     
     NSURL * myURL = [NSURL URLWithString:stringURL];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// requete pour récuperer ses transactions
 -(void)initMesTransactions:(MonCompteRootViewController *)viewController
 {
     self.requete = [[NSString alloc]init];
     self.requete = @"mes transactions";
+   
     self.view = [[NouvelleAnnonceController alloc]init];
     self.view = viewController;
+    
     self.responseData = [NSMutableData data];
+    
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
-    NSLog(@"token : %@",token);
+  
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/mesTransactions.php?token=%@",token];
-    
     NSURL * myURL = [NSURL URLWithString:stringURL];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
    
 }
 
+// Requete pour annuler une annonce
 -(void) annulerAnnonce : (AnnonceController *) viewController withIdAnnonce : (int) id
 {
     self.requete = [[NSString alloc]init];
     self.requete = @"annulation";
+    
     self.view = [[NouvelleAnnonceController alloc]init];
     self.view = viewController;
+    
     self.responseData = [NSMutableData data];
+    
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
-    NSLog(@"token : %@",token);
+
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/annulerAnnonce.php?token=%@&idAnnonce=%d",token,id];
-    
     NSURL * myURL = [NSURL URLWithString:stringURL];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
 }
 
+// Requete pour annuler une transaction
 -(void) annulerTransaction :(TransactionController *)viewController withIdTransaction : (int) id
 {
     self.requete = [[NSString alloc]init];
     self.requete = @"annulation";
+    
     self.view = [[TransactionController alloc]init];
     self.view = viewController;
+    
     self.responseData = [NSMutableData data];
+    
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
-    NSLog(@"token : %@",token);
-    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/annulerTransaction.php?token=%@&idTransaction=%d",token,id];
-    
-    NSURL * myURL = [NSURL URLWithString:stringURL];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
+    NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/annulerTransaction.php?token=%@&idTransaction=%d",token,id];
+    NSURL * myURL = [NSURL URLWithString:stringURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// requete pour valider une transaction
 -(void) validerTransaction :(TransactionController *)viewController withIdTransaction : (int) id withCode : (NSString *) code
 {
     self.requete = [[NSString alloc]init];
     self.requete = @"validation";
+    
     self.view = [[TransactionController alloc]init];
     self.view = viewController;
+   
     self.responseData = [NSMutableData data];
+    
     NSString * token = ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.token;
-    NSLog(@"token : %@",token);
+
     NSString * stringURL = [NSString stringWithFormat: @"http://localhost:8888/Web%%20Service/appliVUT/validerTransaction.php?token=%@&idTransaction=%d&codeValidation=%@",token,id,code];
-    
     NSURL * myURL = [NSURL URLWithString:stringURL];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
-    
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
     [self.responseData setLength:0];
 }
 
@@ -249,8 +262,9 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
+   
     NSLog(@"Connection failed: %@", [error description]);
+    
     if([self.view isKindOfClass:[LoginController class]]){
         [(LoginController *)self.view getResponseFromServeur : YES];
     }else if ([self.view isKindOfClass:[InscriptionController class]]){

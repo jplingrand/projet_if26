@@ -19,30 +19,29 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     return self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
+    // Si le segue var vers l'inscription il est réalisé
     if (sender == self.boutonInscription)
     {
         return YES;
     }
+    // Si tentative de connexion il n'est pas réalisé
     else if (sender == self.boutonConnexion)
     {
         if ([self.txtLogin.text  isEqual: @""] || [self.txtPassword.text  isEqual: @""] ) {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erreur", @"") message:NSLocalizedString(@"Veuillez remplir tous les champs", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
         }else{
+            // Lancement requete serveur
             [[Interface_serveur alloc]initConnexion: self.txtLogin.text withPassword:self.txtPassword.text fromViewController:self];
             return NO;
         }
@@ -53,15 +52,10 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"prepare for seg in login");
-    if([[segue identifier] isEqualToString:@"unlock"]){
-    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"viewdidload");
 }
 
 -(IBAction)unwindToConnexion:(UIStoryboardSegue *)segue
@@ -80,7 +74,7 @@
 
 -(void)getResponseFromServeur : (BOOL) reponse
 {
-    NSLog(@"%@",self.tabBar.etudiant);
+    // Si pas d'erreur on réalise le segue 'unlock' qui va vers le tabbar
    if(!reponse)
    {
        ((AppDelegate *)[UIApplication sharedApplication].delegate).etudiant.login = self.txtLogin.text;
