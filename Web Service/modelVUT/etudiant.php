@@ -11,6 +11,8 @@ class Etudiant
 	public $telephone;
         public $email;
         public $creditVUTs;
+        public $nbTentatives;
+        public $dateTentative;
         
 
 	public function toDB()
