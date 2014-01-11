@@ -17,11 +17,11 @@ $db = new DB($config['dsn'], $config['username'], $config['password'], $config['
 $prefixeSel = 'j5Uz74a8M2';
 $suffixeSel = 'pB61yE9k03';
 
-$password = md5($prefixeSel . $parameters[':password'] . $suffixeSel);
+$password = md5($prefixeSel . $parameters[':password'] . $suffixeSel);  //Chiffrement et salage
 
-date_default_timezone_set('Europe/Paris');
+date_default_timezone_set('Europe/Paris');  //Configuration du fuseau horaire pour l'utilisation ultérieure de time()
 
-$etudiant = new Etudiant();
+$etudiant = new Etudiant();     //Création de l'objet Etudiant
 $etudiant->login = $parameters[':login'];
 $etudiant->password = $password;
 $etudiant->nom = $parameters[':nom'];
@@ -31,18 +31,17 @@ $etudiant->telephone = $parameters[':telephone'];
 $etudiant->email = $parameters[':email'];
 $etudiant->creditVUTs = 50;
 $etudiant->nbTentatives = 0;
-$etudiant->dateTentative = date('Y-m-d H:i:s', time());
+$etudiant->dateTentative = date('Y-m-d H:i:s', time());     //Formatage de la date pour MySQL
 
-$token = md5(time() . $etudiant->login . $etudiant->password);
+$token = md5(time() . $etudiant->login . $etudiant->password);      //Création du token
 $etudiant->token = $token;
 
-if($db->insert($etudiant, 'etudiant'))
+if($db->insert($etudiant, 'etudiant'))  //Insertion en BDD
 {
         $json = array(
 		'error' => false,
 	);
 }
 
-// echo json_encode($json, JSON_PRETTY_PRINT);            5.4 required!!
-echo json_encode($json);
+echo json_encode($json);    //Réponse JSON
 ?>

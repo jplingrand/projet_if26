@@ -28,12 +28,12 @@ $json = array(
 $config = require_once('../config.php');
 $db = new DB($config['dsn'], $config['username'], $config['password'], $config['options']);
 
-$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);
+$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);   //Requête pour vérifier le token de l'étudiant 
 
-if($etudiant !== false)
+if($etudiant !== false)     //Test si le token est bon
 {
     
-        $annonce = new Annonce();
+        $annonce = new Annonce();   //Création de l'objet annonce
         $annonce->refEtudiant = $etudiant->idEtudiant;
         $annonce->categorie = $parameters[':categorie'];
         $annonce->titre = $parameters[':titre'];
@@ -42,39 +42,13 @@ if($etudiant !== false)
         $annonce->valide = true;
         $annonce->date = date('Y-m-d H:i:s');
         
-        /*
-        if ($parameters[':type'] == 'offre')
-        {
-                $annonce = new Offre();
-                $annonce->refEtudiant = $etudiant->idEtudiant;
-                $annonce->categorie = $parameters[':categorie'];
-                $annonce->titre = $parameters[':titre'];
-                $annonce->texte = $parameters[':texte'];
-                $annonce->prix = $parameters[':prix'];
-                $annonce->valide = true;
-                $annonce->date = date('Y-m-d H:i:s');
-                $annonce->photo = 'test';
-        }
-        else if ($parameters[':type'] == 'demande')
-        {
-                $annonce = new Demande();
-                $annonce->refEtudiant = $etudiant->idEtudiant;
-                $annonce->categorie = $parameters[':categorie'];
-                $annonce->titre = $parameters[':titre'];
-                $annonce->texte = $parameters[':texte'];
-                $annonce->prix = $parameters[':prix'];
-                $annonce->valide = true;
-                $annonce->date = date('Y-m-d H:i:s');
-        } 
-        */
         
-        if($db->insert($annonce, 'annonce'))
+        if($db->insert($annonce, 'annonce'))    //Insertion de l'annonce en BDD
         {
                 $json = array(
                         'error' => false,
                 );
         }
 }
-// echo json_encode($json, JSON_PRETTY_PRINT);            5.4 required!!
-echo json_encode($json);
+echo json_encode($json);    //Réponse JSON
 ?>

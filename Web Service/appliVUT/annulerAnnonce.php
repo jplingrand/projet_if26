@@ -24,24 +24,24 @@ $json = array(
 $config = require_once('../config.php');
 $db = new DB($config['dsn'], $config['username'], $config['password'], $config['options']);
 
-$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);
+$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);   //Requête pour vérifier le token de l'étudiant 
 
-if($etudiant !== false)
+if($etudiant !== false)     //Test si le token est bon
 {
-        $sql = "SELECT * FROM annonce WHERE idAnnonce = ? AND refEtudiant = ?";
+        $sql = "SELECT * FROM annonce WHERE idAnnonce = ? AND refEtudiant = ?";     //Requête pour récupérer l'annonce à annuler
 	$pdoStatement = $db->pdo->prepare($sql);
         $pdoStatement -> bindValue(1, $parameters[':idAnnonce']);  
         $pdoStatement -> bindValue(2, $etudiant->idEtudiant);  
 	$pdoStatement->execute();
-        $pdoStatement->setFetchMode(PDO::FETCH_CLASS, 'Annonce');
-	$annonce = $pdoStatement->fetch(PDO::FETCH_CLASS);
+        $pdoStatement->setFetchMode(PDO::FETCH_CLASS, 'Annonce');   
+	$annonce = $pdoStatement->fetch(PDO::FETCH_CLASS);  //Création de l'objet Annonce
         
         if ($annonce !== false)
         {
-                $annonce->valide = false;
+                $annonce->valide = false;   //Modification du statut
         }
 
-        $sql = "UPDATE annonce SET valide = ? WHERE idAnnonce = ?";
+        $sql = "UPDATE annonce SET valide = ? WHERE idAnnonce = ?";     //Mise à jour en BDD
         $pdoStatement = $db->pdo->prepare($sql);
         $pdoStatement -> bindValue(1, $annonce->valide); 
         $pdoStatement -> bindValue(2, $annonce->idAnnonce); 
@@ -54,6 +54,5 @@ if($etudiant !== false)
                 );
         }
 }
-// echo json_encode($json, JSON_PRETTY_PRINT);            5.4 required!!
-echo json_encode($json);
+echo json_encode($json);    //Réponse JSON
 ?>

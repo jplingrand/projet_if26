@@ -36,24 +36,24 @@ $json = array(
 $config = require_once('../config.php');
 $db = new DB($config['dsn'], $config['username'], $config['password'], $config['options']);
 
-$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);
+$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);   //Requête pour vérifier le token de l'étudiant 
 
-if($etudiant !== false)
+if($etudiant !== false)     //Test si le token est bon
 {
-        $annonce = $db->find('Annonce', 'annonce', 'idAnnonce = :idAnnonce', $parameters);
+        $annonce = $db->find('Annonce', 'annonce', 'idAnnonce = :idAnnonce', $parameters);  //Récupération de l'annonce
         if($annonce != false)
         {
-                if($annonce->valide == true && $etudiant->creditVUTs >= $annonce->prix)
+                if($annonce->valide == true && $etudiant->creditVUTs >= $annonce->prix) //Test si l'étudiant peut payer le montant annoncé et si l'annonce est valide
                 {
-                        $annonce->valide = false;
+                        $annonce->valide = false;   //Modification du statut
 
-                        $sql = "UPDATE annonce SET valide = ? WHERE idAnnonce = ?";
+                        $sql = "UPDATE annonce SET valide = ? WHERE idAnnonce = ?";     //Mise à jour en BDD
                         $pdoStatement = $db->pdo->prepare($sql);
                         $pdoStatement -> bindValue(1, $annonce->valide); 
                         $pdoStatement -> bindValue(2, $annonce->idAnnonce); 
                         $pdoStatement->execute();
 
-                        $transaction = new Transaction();
+                        $transaction = new Transaction();       //Création d'un objet Transaction correspondant à l'annonce
                         $transaction->refAcheteur = $etudiant->idEtudiant;
                         $transaction->refVendeur = $annonce->refEtudiant;
                         $transaction->noteAcheteur = 10;
@@ -62,13 +62,13 @@ if($etudiant !== false)
                         $transaction->titre = $annonce->titre;
                         $transaction->prix = $annonce->prix;
 
-                        $codeValidation = random(8);
+                        $codeValidation = random(8);    //Génération d'un code de validation destiné à l'acheteur
                         $transaction->codeValidation = $codeValidation;
 
-                        if($db->insert($transaction, 'transaction'))
+                        if($db->insert($transaction, 'transaction'))    //Insertion de la transaction en BDD
                         {       
-                                $etudiant->creditVUTs -= $transaction->prix;
-                                if($db->update($etudiant, 'etudiant', 'idEtudiant = :idEtudiant', array(':idEtudiant' => $etudiant->idEtudiant)))
+                                $etudiant->creditVUTs -= $transaction->prix;    //Compte VUT de l'acheteur débité
+                                if($db->update($etudiant, 'etudiant', 'idEtudiant = :idEtudiant', array(':idEtudiant' => $etudiant->idEtudiant)))   //Mise à jour en BDD
                                 {                                                     
                                         $json = array(
                                                 'error' => false,
@@ -78,6 +78,5 @@ if($etudiant !== false)
                 }
         }  
 }
-// echo json_encode($json, JSON_PRETTY_PRINT);            5.4 required!!
-echo json_encode($json);
+echo json_encode($json);    //Réponse JSON
 ?>

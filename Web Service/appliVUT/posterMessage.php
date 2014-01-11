@@ -30,23 +30,23 @@ $json = array(
 $config = require_once('../config.php');
 $db = new DB($config['dsn'], $config['username'], $config['password'], $config['options']);
 
-$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);
+$etudiant = $db->find('Etudiant', 'etudiant', 'token = :token', $etudiantParameters);   //Requête pour vérifier le token de l'étudiant 
 
-if($etudiant !== false)
+if($etudiant !== false)     //Test si le token est bon
 {
     
-        $annonce = $db->find('Annonce', 'annonce', 'idAnnonce = :idAnnonce', $annonceParameters);
+        $annonce = $db->find('Annonce', 'annonce', 'idAnnonce = :idAnnonce', $annonceParameters);   //Récupération de l'annonce
         
         if ($annonce !== false)
         {
             
-            $message = new Message();
+            $message = new Message();   //Création de l'objet Message
             $message->refEtudiant = $etudiant->idEtudiant;
             $message->refAnnonce = $annonce->idAnnonce;
             $message->texte = $parameters[':texte'];
             $message->date = date('Y-m-d H:i:s');            
         
-                if($db->insert($message, 'message'))
+                if($db->insert($message, 'message'))    //Insertion en BDD
                 {
                         $json = array(
                                 'error' => false,
@@ -55,6 +55,5 @@ if($etudiant !== false)
         
         }
 }
-// echo json_encode($json, JSON_PRETTY_PRINT);            5.4 required!!
-echo json_encode($json);
+echo json_encode($json);    //Réponse JSON
 ?>
